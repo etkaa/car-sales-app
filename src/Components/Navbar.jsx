@@ -99,13 +99,22 @@ const Navbar = () => {
         name="mobile menu"
         className={`md:hidden ${!isMenuOpen && "hidden"}`}
       >
-        <a href="/" className="block border-b-2 px-4 py-4 text-xl text-center">
+        <a
+          href="/"
+          className="block hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
+        >
           Login
         </a>
-        <a href="/" className="block border-b-2 px-4 py-4 text-xl text-center">
+        <a
+          href="/"
+          className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
+        >
           Sign Up
         </a>
-        <a href="/" className="block border-b-2 px-4 py-4 text-xl text-center">
+        <a
+          href="/"
+          className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
+        >
           Contact
         </a>
       </div>

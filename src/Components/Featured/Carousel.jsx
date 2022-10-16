@@ -1,69 +1,319 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
+
+const DUMMY_CARS = [
+  {
+    id: "0",
+    status: "available",
+    listing: {
+      listingId: "0000",
+      listingOwnerId: "user0000",
+      createdAt: Date(10, 10, 2022, 10, 53),
+    },
+    condition: "used",
+    year: "2018",
+    make: "Honda",
+    model: "Accord",
+    trim: "Sport",
+    engine: {
+      electric: false,
+      capacity: "2.0L",
+      cylinders: "4",
+      horsepower: "186",
+      torque: "175",
+    },
+    miles: "12508",
+    price: {
+      original: "32456",
+      discounted: "35990",
+    },
+    location: {
+      city: "Boston",
+      state: "MA",
+      zip: "02108",
+    },
+    pictures: {
+      cover: "https://source.unsplash.com/random/?car/1",
+      p1: "url1",
+      p2: "url2",
+      p3: "url3",
+      p4: "url4",
+      p5: "url5",
+    },
+  },
+  {
+    id: "1",
+    status: "available",
+    listing: {
+      listingId: "0001",
+      listingOwnerId: "user0001",
+      createdAt: Date(10, 11, 2022, 10, 46),
+    },
+    condition: "used",
+    year: "2019",
+    make: "Tesla",
+    model: "Model S",
+    trim: "Plaid Performante Nationale",
+    engine: {
+      electric: true,
+      capacity: "95Kwh",
+      cylinders: "n/A",
+      horsepower: "987",
+      torque: "1056",
+    },
+    miles: "7965",
+    price: {
+      original: "148900",
+      discounted: "145600",
+    },
+    location: {
+      city: "Brooklyn",
+      state: "NY",
+      zip: "15489",
+    },
+    pictures: {
+      cover: "https://source.unsplash.com/random/?car/2",
+      p1: "url1",
+      p2: "url2",
+      p3: "url3",
+      p4: "url4",
+      p5: "url5",
+    },
+  },
+  {
+    id: "2",
+    status: "available",
+    listing: {
+      listingId: "0002",
+      listingOwnerId: "user0002",
+      createdAt: Date(10, 10, 2022, 10, 53),
+    },
+    condition: "used",
+    year: "2020",
+    make: "Mercedes",
+    model: "C300",
+    trim: "Elegance",
+    engine: {
+      capacity: "3.0L",
+      cylinders: "6",
+      horsepower: "245",
+      torque: "260",
+    },
+    miles: "8000",
+    price: {
+      original: "56500",
+      discounted: "52899",
+    },
+    location: {
+      city: "Newton",
+      state: "PA",
+      zip: "56987",
+    },
+    pictures: {
+      cover: "https://source.unsplash.com/random/?car/3",
+      p1: "url1",
+      p2: "url2",
+      p3: "url3",
+      p4: "url4",
+      p5: "url5",
+    },
+  },
+  {
+    id: "3",
+    status: "available",
+    listing: {
+      listingId: "0003",
+      listingOwnerId: "user0003",
+      createdAt: Date(10, 10, 2022, 10, 53),
+    },
+    condition: "used",
+    year: "2021",
+    make: "Audi",
+    model: "A6",
+    trim: "Premium",
+    engine: {
+      capacity: "3.2L",
+      cylinders: "6",
+      horsepower: "298",
+      torque: "315",
+    },
+    miles: "6458",
+    price: {
+      original: "75485",
+      discounted: "75485",
+    },
+    location: {
+      city: "Fairfax",
+      state: "VA",
+      zip: "36521",
+    },
+    pictures: {
+      cover: "https://source.unsplash.com/random/?car/4",
+      p1: "url1",
+      p2: "url2",
+      p3: "url3",
+      p4: "url4",
+      p5: "url5",
+    },
+  },
+  {
+    id: "4",
+    status: "available",
+    listing: {
+      listingId: "0004",
+      listingOwnerId: "user0004",
+      createdAt: Date(10, 10, 2022, 10, 53),
+    },
+    condition: "new",
+    year: "2022",
+    make: "Hyundai",
+    model: "Sonata",
+    trim: "Limited",
+    engine: {
+      capacity: "1.6L",
+      cylinders: "4",
+      horsepower: "186",
+      torque: "195",
+    },
+    miles: "0",
+    price: {
+      original: "39879",
+      discounted: "36990",
+    },
+    location: {
+      city: "Farmingville",
+      state: "NY",
+      zip: "11738",
+    },
+    pictures: {
+      cover: "https://source.unsplash.com/random/?car/5",
+      p1: "url1",
+      p2: "url2",
+      p3: "url3",
+      p4: "url4",
+      p5: "url5",
+    },
+  },
+  {
+    id: "5",
+    status: "available",
+    listing: {
+      listingId: "0005",
+      listingOwnerId: "user0005",
+      createdAt: Date(10, 10, 2022, 10, 53),
+    },
+    condition: "used",
+    year: "2016",
+    make: "Honda",
+    model: "HR-V",
+    trim: "EX-L",
+    engine: {
+      capacity: "2.0L",
+      cylinders: "4",
+      horsepower: "192",
+      torque: "198",
+    },
+    miles: "4256",
+    price: {
+      original: "42565",
+      discounted: "39900",
+    },
+    location: {
+      city: "Syracuse",
+      state: "NY",
+      zip: "56256",
+    },
+    pictures: {
+      cover: "https://source.unsplash.com/random/?car/6",
+      p1: "url1",
+      p2: "url2",
+      p3: "url3",
+      p4: "url4",
+      p5: "url5",
+    },
+  },
+];
 
 const Carousel = () => {
+  const carousel = useRef();
+
+  const leftScrollHandler = () => {
+    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+  };
+
+  const rightScrollHandler = () => {
+    carousel.current.scrollLeft += carousel.current.offsetWidth;
+  };
+
   return (
     <Fragment>
-      <h2 className="text-center text-2xl block px-4 mt-7 mb-4">
+      <h2 className="text-center text-2xl block px-4 mt-8 ">
         F E A T U R E D <b>C A R S</b>
       </h2>
-      <div name="wrapper" className="flex justify-center items-center px-4">
-        <div className="overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen mt-4 mx-auto place-items-center">
-          <div className="aspect-square rounded-lg max-w-xs shadow-md h-80 bg-gray-100 mx-auto my-2">
-            <img
-              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              className="h-4/6 w-full rounded-t-lg"
-              alt="car1"
+      <div
+        name="wrapper"
+        className="flex mx-auto justify-center items-center max-w-7xl"
+      >
+        <button onClick={leftScrollHandler} className="hidden md:flex w-16">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.2}
+            stroke="currentColor"
+            className="w-12 h-12 hover:scale-125 hover:text-gray-400 transition duration-200"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
             />
-            <h2 className="h-1/6 font-semibold text-xl px-4 py-2">
-              2018 Ford Mustang GT
-            </h2>
-            <h2 className="h-1/6 font-md text-xl px-4">$27,654</h2>
-          </div>
-          <div className="aspect-square rounded-lg max-w-xs shadow-md h-80 bg-gray-100 mx-auto my-2">
-            <img
-              src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-              className="h-4/6 rounded-t-lg mx-auto w-full"
-              alt="car2"
-            />
-            <h2 className="h-1/6 font-semibold text-xl px-4 py-2">
-              2016 BMW 4.28i xDrive
-            </h2>
-            <h2 className="h-1/6 font-md text-xl px-4">$27,654</h2>
-          </div>{" "}
-          <div className="aspect-square rounded-lg max-w-xs shadow-md h-80 bg-gray-100 mx-auto my-2">
-            <img
-              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              className="h-4/6 w-full rounded-t-lg"
-              alt="car3"
-            />
-            <h2 className="h-1/6 font-semibold text-xl px-4 py-2">
-              2018 Ford Mustang GT
-            </h2>
-            <h2 className="h-1/6 font-md text-xl px-4">$27,654</h2>
-          </div>
-          <div className="aspect-square rounded-lg max-w-xs shadow-md h-80 bg-gray-100 mx-auto my-2">
-            <img
-              src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-              className="h-4/6 rounded-t-lg"
-              alt="car4"
-            />
-            <h2 className="h-1/6 font-semibold text-xl px-4 py-2">
-              2016 BMW 4.28i xDrive
-            </h2>
-            <h2 className="h-1/6 font-md text-xl px-4">$27,654</h2>
-          </div>
-          <div className="aspect-square rounded-lg max-w-xs shadow-md h-80 bg-gray-100 mx-auto my-2">
-            <img
-              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              className="h-4/6 w-full rounded-t-lg"
-              alt="car3"
-            />
-            <h2 className="h-1/6 font-semibold text-xl px-4 py-2">
-              2018 Ford Mustang GT
-            </h2>
-            <h2 className="h-1/6 font-md text-xl px-4">$27,654</h2>
-          </div>
+          </svg>
+        </button>
+        <div
+          ref={carousel}
+          className="flex scrollbar-hide snap-x snap-mandatory scroll-smooth space-x-4 px-4 min-w-[22rem] overflow-x-auto w-screen my-4 md:mx-auto place-items-center h-96"
+        >
+          {DUMMY_CARS.map((item) => {
+            return (
+              <div className="hover:scale-105 cursor-pointer transition duration-200 snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-80 bg-gray-100 hover:bg-white mx-auto my-2">
+                <img
+                  src={item.pictures.cover}
+                  className="h-4/6 w-full rounded-t-lg object-cover"
+                  alt={item.make}
+                />
+                <h2 className="h-[14%] font-semibold text-xl px-4 py-3">
+                  {`${item.year} ${item.make} ${item.model} ${item.trim}`.substring(
+                    0,
+                    29
+                  )}
+                </h2>
+                <div className="h-[10%] mt-1 flex justify-between border-b-2">
+                  <h2 className="font-md text-xl px-4">
+                    ${item.price.original.toLocaleString("en-US")}
+                  </h2>
+                  <h2 className="font-md text-xl px-4">{item.miles} mi</h2>
+                </div>
+                <h3 className="h-[8%] font-md text-sm px-4 py-1">{`${item.location.city}, ${item.location.state}`}</h3>
+              </div>
+            );
+          })}
         </div>
+        <button onClick={rightScrollHandler} className="hidden md:flex w-16">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.2}
+            stroke="currentColor"
+            className="w-12 h-12 hover:scale-125 hover:text-gray-400 transition duration-200"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
       </div>
     </Fragment>
   );

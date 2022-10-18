@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import AdvancedSearch from "./AdvancedSearch";
+import AdvancedSearch from "../AdvancedSearch/AdvancedSearch";
 
 const SearchBar = () => {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);

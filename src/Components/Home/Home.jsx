@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
-import Carousel from "../Featured/Carousel";
+import FeaturedSection from "../Featured/FeaturedSection";
 import Navbar from "../Navbar";
-import SearchBar from "../SearchBar";
+import SearchBar from "./SearchBar";
 
 const Home = () => {
   return (
     <Fragment>
       <Navbar />
       <SearchBar />
-      <Carousel />
+      <FeaturedSection />
     </Fragment>
   );
 };

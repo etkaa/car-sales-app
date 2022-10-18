@@ -1,4 +1,7 @@
 import React, { Fragment, useRef } from "react";
+import ListingCard from "../ListingCard";
+import LeftScrollArrow from "./LeftScrollArrow";
+import RightScrollArrow from "./RightScrollArrow";
 
 const DUMMY_CARS = [
   {
@@ -246,73 +249,23 @@ const Carousel = () => {
 
   return (
     <Fragment>
-      <h2 className="text-center text-2xl block px-4 mt-8 ">
-        F E A T U R E D <b>C A R S</b>
-      </h2>
       <div
         name="wrapper"
         className="flex mx-auto justify-center items-center max-w-7xl"
       >
         <button onClick={leftScrollHandler} className="hidden md:flex w-16">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.2}
-            stroke="currentColor"
-            className="w-12 h-12 hover:scale-125 hover:text-gray-400 transition duration-200"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
+          <LeftScrollArrow />
         </button>
         <div
           ref={carousel}
           className="flex scrollbar-hide snap-x snap-mandatory scroll-smooth space-x-4 px-4 min-w-[22rem] overflow-x-auto w-screen my-4 md:mx-auto place-items-center h-96"
         >
           {DUMMY_CARS.map((item) => {
-            return (
-              <div className="hover:scale-105 cursor-pointer transition duration-200 snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-80 bg-gray-100 hover:bg-white mx-auto my-2">
-                <img
-                  src={item.pictures.cover}
-                  className="h-4/6 w-full rounded-t-lg object-cover"
-                  alt={item.make}
-                />
-                <h2 className="h-[14%] font-semibold text-xl px-4 py-3">
-                  {`${item.year} ${item.make} ${item.model} ${item.trim}`.substring(
-                    0,
-                    29
-                  )}
-                </h2>
-                <div className="h-[10%] mt-1 flex justify-between border-b-2">
-                  <h2 className="font-md text-xl px-4">
-                    ${item.price.original.toLocaleString("en-US")}
-                  </h2>
-                  <h2 className="font-md text-xl px-4">{item.miles} mi</h2>
-                </div>
-                <h3 className="h-[8%] font-md text-sm px-4 py-1">{`${item.location.city}, ${item.location.state}`}</h3>
-              </div>
-            );
+            return <ListingCard key={item.id} item={item} />;
           })}
         </div>
         <button onClick={rightScrollHandler} className="hidden md:flex w-16">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.2}
-            stroke="currentColor"
-            className="w-12 h-12 hover:scale-125 hover:text-gray-400 transition duration-200"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
+          <RightScrollArrow />
         </button>
       </div>
     </Fragment>

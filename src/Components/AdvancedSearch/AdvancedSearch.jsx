@@ -93,7 +93,7 @@ const AdvancedSearch = () => {
             value={year}
             onChange={handleChange}
             className="bg-slate-100 shadow-xl 
-        outline-none w-7/12 max-w-md rounded-md
+        outline-none w-8/12 max-w-md rounded-md
         px-3 py-2 appearance-none"
           >
             <option className="py-1 hover:bg-slate-400">{"Select Year"}</option>
@@ -112,7 +112,7 @@ const AdvancedSearch = () => {
             value={make}
             onChange={handleChange}
             className="bg-slate-100 shadow-xl 
-        outline-none w-7/12 max-w-md rounded-md
+        outline-none w-8/12 max-w-md rounded-md
         px-3 py-2 appearance-none"
           >
             <option className="py-1 hover:bg-slate-400">{"Select Make"}</option>
@@ -131,7 +131,7 @@ const AdvancedSearch = () => {
             value={model}
             onChange={handleChange}
             className="bg-slate-100 shadow-xl 
-        outline-none w-7/12 max-w-md rounded-md
+        outline-none w-8/12 max-w-md rounded-md
         px-3 py-2 appearance-none"
           >
             <option className="py-1 hover:bg-slate-400">
@@ -153,7 +153,7 @@ const AdvancedSearch = () => {
         </div>
         <div
           className={`flex justify-center mx-auto 
-          outline-none w-7/12 max-w-md rounded-md
+          outline-none w-8/12 max-w-md rounded-md
           space-x-4 ${!isModelSelected ? "hidden" : ""}`}
         >
           <input
@@ -177,7 +177,7 @@ const AdvancedSearch = () => {
         </div>
         <div
           className={`flex justify-center mx-auto 
-          outline-none w-7/12 max-w-md rounded-md
+          outline-none w-8/12 max-w-md rounded-md
           space-x-4 ${!isModelSelected ? "hidden" : ""}`}
         >
           <input
@@ -185,7 +185,7 @@ const AdvancedSearch = () => {
             name="minPrice"
             value={minPrice}
             onChange={handleChange}
-            placeholder="Min Price"
+            placeholder="Min Price ($)"
             className="bg-slate-100 shadow-xl 
         outline-none w-6/12 max-w-md rounded-md px-3 py-2 appearance-none"
           />
@@ -194,14 +194,14 @@ const AdvancedSearch = () => {
             name="maxPrice"
             value={maxPrice}
             onChange={handleChange}
-            placeholder="Max Price"
+            placeholder="Max Price ($)"
             className="bg-slate-100 shadow-xl 
         outline-none w-6/12 max-w-md rounded-md px-3 py-2 appearance-none"
           />
         </div>
         <div
           className={`flex items-center justify-between mx-auto 
-          outline-none w-7/12 max-w-md rounded-md
+          outline-none w-9/12 max-w-md rounded-md
           ${!isModelSelected ? "" : ""}`}
         >
           <button

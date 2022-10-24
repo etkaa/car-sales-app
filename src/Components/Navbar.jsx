@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,8 +11,8 @@ const Navbar = () => {
   return (
     <nav className="items-center w-screen rounded-b bg-gray-100 shadow-lg">
       <div className="flex justify-between items-center mx-auto max-w-7xl py-1 px-8 sm:px-auto">
-        <a
-          href="/"
+        <Link
+          to="/home"
           className="sm:w-1/2 md:w-4/12 flex items-center text-center justify-start space-x-3 py-4 hover:text-blue-400 transition duration-150"
         >
           <svg
@@ -31,7 +32,7 @@ const Navbar = () => {
           <h2 className="text-2xl">
             C A R S <b>N O W</b>
           </h2>
-        </a>
+        </Link>
         <div name="menu svg" className="md:hidden" onClick={toggleMenuHandler}>
           {!isMenuOpen ? (
             <svg
@@ -69,54 +70,54 @@ const Navbar = () => {
           name="normal menu"
           className="hidden md:flex justify-between items-center my-auto space-x-8"
         >
-          <a
-            href="/"
+          <Link
+            to="/home"
             className="text-xl hover:text-gray-400 transition duration-100 py-4"
           >
             Home
-          </a>
-          <a
-            href="/"
+          </Link>
+          <Link
+            to="/contact"
             className="text-xl hover:text-gray-400 transition duration-100 py-4"
           >
             Contact
-          </a>
-          <a
-            href="/"
+          </Link>
+          <Link
+            to="/authenticate/login"
             className="text-xl hover:text-gray-400 transition duration-100 py-4"
           >
             Login
-          </a>
-          <a
-            href="/"
+          </Link>
+          <Link
+            to="/authenticate/signup"
             className="font-medium text-xl transition duration-100 text-slate-700 bg-yellow-400 hover:text-white hover:bg-purple-400 py-2 rounded-lg px-2"
           >
             Sign Up
-          </a>
+          </Link>
         </div>
       </div>
       <div
         name="mobile menu"
         className={`md:hidden ${!isMenuOpen && "hidden"}`}
       >
-        <a
-          href="/"
+        <Link
+          to="/authenticate/login"
           className="block hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
         >
           Login
-        </a>
-        <a
-          href="/"
+        </Link>
+        <Link
+          to="/authenticate/signup"
           className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
         >
           Sign Up
-        </a>
-        <a
-          href="/"
+        </Link>
+        <Link
+          to="/contact"
           className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
         >
           Contact
-        </a>
+        </Link>
       </div>
     </nav>
   );

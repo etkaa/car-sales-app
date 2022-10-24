@@ -7,7 +7,7 @@ const ListingCard = ({ item }) => {
   return (
     <div
       key={item.id}
-      className="hover:scale-105 cursor-pointer transition duration-200 snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-80 bg-gray-100 hover:bg-white mx-auto mb-2"
+      className="lg:hover:scale-105 cursor-pointer transition duration-200 snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-80 bg-slate-100 lg:hover:bg-white mx-auto my-auto"
     >
       <img
         src={item.pictures.cover}

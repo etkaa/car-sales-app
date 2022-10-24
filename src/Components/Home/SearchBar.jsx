@@ -25,7 +25,7 @@ const SearchBar = () => {
           <h2 className="text-white text-md">OR</h2>
           <button
             onClick={toggleAdvanced}
-            className={`flex items-center text-lg py-2 px-3 mx-auto mt-5 mb-10 hover:bg-gray-300 shadow-md rounded-xl ${
+            className={`flex items-center text-lg py-2 px-4 mx-auto mt-5 mb-10 hover:bg-gray-300 shadow-md rounded-xl ${
               isAdvancedOpen
                 ? "bg-blue-400 text-white font-semibold"
                 : "bg-gray-200"

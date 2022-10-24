@@ -89,7 +89,7 @@ const Navbar = () => {
           </a>
           <a
             href="/"
-            className="font-medium text-xl transition duration-100 text-slate-700 bg-yellow-400 hover:text-slate-500 hover:bg-yellow-300 py-2 rounded px-2"
+            className="font-medium text-xl transition duration-100 text-slate-700 bg-yellow-400 hover:text-white hover:bg-purple-400 py-2 rounded-lg px-2"
           >
             Sign Up
           </a>

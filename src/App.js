@@ -15,6 +15,7 @@ function App() {
           path="/authenticate/signup"
           element={<Authenticate returningUser={false} />}
         />
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

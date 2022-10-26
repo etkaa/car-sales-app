@@ -19,7 +19,7 @@ const SignIn = () => {
 
   const formSubmitHandler = () => {
     //send api call
-  }
+  };
 
   return (
     <>
@@ -55,7 +55,7 @@ const SignIn = () => {
           </button>
           <h3 className="px-3 py-2">OR</h3>
           <button
-          onClick={formSubmitHandler}
+            onClick={formSubmitHandler}
             className="mx-auto my-2 text-lg text-white bg-pink-400 
         px-6 py-[0.4rem] rounded-lg mt-3 shadow-md hover:bg-purple-400 
         transition duration-100 hover:shadow-lg"

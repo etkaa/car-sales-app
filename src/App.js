@@ -1,10 +1,10 @@
+import React from "react";
 import Authenticate from "./Components/Authentication/Authenticate";
 import Home from "./Components/Home/Home";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route
@@ -17,7 +17,6 @@ function App() {
         />
         <Route path="*" element={<Home />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 

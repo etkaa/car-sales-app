@@ -157,7 +157,7 @@ const AdvancedSearch = () => {
           space-x-4 ${!isModelSelected ? "hidden" : ""}`}
         >
           <input
-            type="number"
+            type={"number"}
             name="minMile"
             value={minMile}
             onChange={handleChange}
@@ -166,7 +166,7 @@ const AdvancedSearch = () => {
         outline-none w-6/12 max-w-md rounded-md px-3 py-2 appearance-none"
           />
           <input
-            type="number"
+            type={"number"}
             name="maxMile"
             value={maxMile}
             onChange={handleChange}
@@ -181,7 +181,7 @@ const AdvancedSearch = () => {
           space-x-4 ${!isModelSelected ? "hidden" : ""}`}
         >
           <input
-            type="number"
+            type={"number"}
             name="minPrice"
             value={minPrice}
             onChange={handleChange}
@@ -190,7 +190,7 @@ const AdvancedSearch = () => {
         outline-none w-6/12 max-w-md rounded-md px-3 py-2 appearance-none"
           />
           <input
-            type="number"
+            type={"number"}
             name="maxPrice"
             value={maxPrice}
             onChange={handleChange}
@@ -207,9 +207,9 @@ const AdvancedSearch = () => {
           <button
             type="button"
             onClick={submitHandler}
-            className={`flex items-center text-white text-lg py-2 px-5 mx-auto mt-5 mb-5 bg-blue-400 font-semibold hover:bg-gray-300 shadow-md rounded-xl ${
-              !isModelSelected ? "hidden" : ""
-            }`}
+            className={`flex items-center justify-center text-center text-white text-lg w-[8rem] 
+            py-2 mx-auto mt-5 mb-5 bg-blue-500 font-semibold hover:bg-gray-300 
+            shadow-md rounded-xl ${!isModelSelected ? "hidden" : ""}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -230,9 +230,9 @@ const AdvancedSearch = () => {
           <button
             type="button"
             onClick={clearHandler}
-            className={`flex items-center text-white text-lg py-2 px-6 mx-auto mt-5 mb-5 bg-purple-500 font-semibold hover:bg-gray-300 shadow-md rounded-xl ${
-              !isModelSelected ? "hidden" : ""
-            }`}
+            className={`flex items-center justify-center text-center text-white text-lg w-[8rem] 
+            py-2 mx-auto mt-5 mb-5 bg-purple-500 font-semibold hover:bg-gray-300 
+            shadow-md rounded-xl ${!isModelSelected ? "hidden" : ""}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

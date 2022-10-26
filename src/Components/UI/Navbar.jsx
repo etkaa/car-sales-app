@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="items-center w-screen rounded-b bg-gray-100 shadow-lg">
+    <nav className="items-center w-[100%] rounded-b bg-gray-100 shadow-lg">
       <div className="flex justify-between items-center mx-auto max-w-7xl py-1 px-8 sm:px-auto">
         <Link
           to="/home"
@@ -76,12 +76,12 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <Link
+          {/* <Link
             to="/contact"
             className="text-xl hover:text-gray-400 transition duration-100 py-4"
           >
             Contact
-          </Link>
+          </Link> */}
           <Link
             to="/authenticate/login"
             className="text-xl hover:text-gray-400 transition duration-100 py-4"

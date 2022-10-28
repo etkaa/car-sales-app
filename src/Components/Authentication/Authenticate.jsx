@@ -6,9 +6,9 @@ import SignUp from "./SignUp";
 
 const Authenticate = ({ returningUser }) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col justify-between min-h-screen">
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-w-[18rem] w-[22rem] mx-auto my-10 h-[36rem] rounded-sm shadow-xl">
+      <div className="flex flex-col items-center justify-center min-w-[18rem] w-[22rem] mx-auto my-auto h-[36rem] rounded-sm shadow-xl">
         {returningUser ? <SignIn /> : <SignUp />}
       </div>
       <Footer />

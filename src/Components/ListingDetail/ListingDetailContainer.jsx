@@ -43,12 +43,12 @@ const ListingDetailContainer = () => {
       <div
         name="top-container"
         className="flex flex-col space-y-4 lg:space-y-0 lg:space-x-4 lg:flex-row 
-          max-w-7xl mx-auto my-8 shadow-lg px-0 md:px-6 py-4
+          max-w-7xl mx-auto my-8 shadow-lg px-0 md:px-6 md:py-4
         bg-slate-50 md:w-[90%] lg:max-h-[42rem]"
       >
         <div
           className="flex mx-auto my-auto justify-center items-center w-[100%] lg:w-[65%] 
-          h-[20rem] lg:h-[40rem] rounded-lg"
+          h-[22rem] lg:h-[40rem] rounded-lg"
         >
           <button className="hidden lg:flex w-16 mr-1" onClick={handleLeftClick}>
             {!hideLeft && <LeftScrollArrow />}
@@ -56,7 +56,7 @@ const ListingDetailContainer = () => {
           <div className="lg:h-[90%] h-[100%] w-[100%] flex">
             <img
               src={item.pictures.otherPictures[index]}
-              className="my-auto mx-auto max-h-[100%] object-contain"
+              className="my-auto mx-auto max-h-[100%] h-[100%] w-[100%] object-cover"
               alt={item.make}
             />
           </div>

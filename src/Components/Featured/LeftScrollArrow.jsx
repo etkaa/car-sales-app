@@ -8,7 +8,7 @@ const LeftScrollArrow = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.2}
       stroke="currentColor"
-      className="w-12 h-12 hover:scale-125 hover:text-gray-400 transition duration-200"
+      className="w-12 h-12 lg:hover:scale-125 lg:hover:text-gray-400 transition duration-200"
     >
       <path
         strokeLinecap="round"

@@ -767,12 +767,14 @@ export const DUMMY_CARS = [
       zip: "02108",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/1",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/32",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/123462",
+        "https://source.unsplash.com/random/?car/1436",
+        "https://source.unsplash.com/random/?car/13446",
+        "https://source.unsplash.com/random/?car/1546",
+        "https://source.unsplash.com/random/?car/17663",
+      ]
     },
   },
   {
@@ -808,12 +810,14 @@ export const DUMMY_CARS = [
       zip: "15489",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/2",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/14",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/12362",
+        "https://source.unsplash.com/random/?car/135436",
+        "https://source.unsplash.com/random/?car/144326",
+        "https://source.unsplash.com/random/?car/15246",
+        "https://source.unsplash.com/random/?car/17643"
+      ]
     },
   },
   {
@@ -848,12 +852,14 @@ export const DUMMY_CARS = [
       zip: "56987",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/3",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/23",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/16322",
+        "https://source.unsplash.com/random/?car/1346",
+        "https://source.unsplash.com/random/?car/14236",
+        "https://source.unsplash.com/random/?car/1556",
+        "https://source.unsplash.com/random/?car/1476",
+      ]
     },
   },
   {
@@ -888,12 +894,14 @@ export const DUMMY_CARS = [
       zip: "36521",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/4",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/16",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1662",
+        "https://source.unsplash.com/random/?car/1736",
+        "https://source.unsplash.com/random/?car/1466",
+        "https://source.unsplash.com/random/?car/1566",
+        "https://source.unsplash.com/random/?car/1746"
+      ]
     },
   },
   {
@@ -928,12 +936,14 @@ export const DUMMY_CARS = [
       zip: "11738",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/5",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/1",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1623",
+        "https://source.unsplash.com/random/?car/1336",
+        "https://source.unsplash.com/random/?car/1436",
+        "https://source.unsplash.com/random/?car/1546",
+        "https://source.unsplash.com/random/?car/1764"
+      ]
     },
   },
   {
@@ -968,12 +978,14 @@ export const DUMMY_CARS = [
       zip: "56256",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/6",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/2",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1562",
+        "https://source.unsplash.com/random/?car/1356",
+        "https://source.unsplash.com/random/?car/1456",
+        "https://source.unsplash.com/random/?car/15556",
+        "https://source.unsplash.com/random/?car/1756"
+      ]
     },
   },
   {
@@ -1009,12 +1021,14 @@ export const DUMMY_CARS = [
       zip: "02108",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/61",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/3",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1632",
+        "https://source.unsplash.com/random/?car/1326",
+        "https://source.unsplash.com/random/?car/1436",
+        "https://source.unsplash.com/random/?car/1536",
+        "https://source.unsplash.com/random/?car/17e6"
+      ]
     },
   },
   {
@@ -1050,12 +1064,14 @@ export const DUMMY_CARS = [
       zip: "15489",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/72",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/4",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1262",
+        "https://source.unsplash.com/random/?car/1316",
+        "https://source.unsplash.com/random/?car/1426",
+        "https://source.unsplash.com/random/?car/1526",
+        "https://source.unsplash.com/random/?car/1726"
+      ]
     },
   },
   {
@@ -1090,12 +1106,14 @@ export const DUMMY_CARS = [
       zip: "56987",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/38",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/5",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1692",
+        "https://source.unsplash.com/random/?car/1306",
+        "https://source.unsplash.com/random/?car/1436",
+        "https://source.unsplash.com/random/?car/1556",
+        "https://source.unsplash.com/random/?car/17976"
+      ]
     },
   },
   {
@@ -1130,12 +1148,14 @@ export const DUMMY_CARS = [
       zip: "36521",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/49",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/6",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1622",
+        "https://source.unsplash.com/random/?car/1236",
+        "https://source.unsplash.com/random/?car/1346",
+        "https://source.unsplash.com/random/?car/1546",
+        "https://source.unsplash.com/random/?car/1756"
+      ]
     },
   },
   {
@@ -1170,12 +1190,14 @@ export const DUMMY_CARS = [
       zip: "11738",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/125",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/7",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/1672",
+        "https://source.unsplash.com/random/?car/1376",
+        "https://source.unsplash.com/random/?car/1476",
+        "https://source.unsplash.com/random/?car/1576",
+        "https://source.unsplash.com/random/?car/1776"
+      ]
     },
   },
   {
@@ -1210,12 +1232,14 @@ export const DUMMY_CARS = [
       zip: "56256",
     },
     pictures: {
-      cover: "https://source.unsplash.com/random/?car/16",
-      p1: "url1",
-      p2: "url2",
-      p3: "url3",
-      p4: "url4",
-      p5: "url5",
+      cover: "https://source.unsplash.com/random/?car/8",
+      otherPictures: [
+        "https://source.unsplash.com/random/?car/162",
+        "https://source.unsplash.com/random/?car/136",
+        "https://source.unsplash.com/random/?car/146",
+        "https://source.unsplash.com/random/?car/156",
+        "https://source.unsplash.com/random/?car/176"
+      ]
     },
   },
 ];

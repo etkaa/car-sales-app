@@ -22,8 +22,7 @@ const SignIn = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center w-full bg-slate-100 h-full">
+      <main className="flex flex-col items-center w-full bg-slate-50 h-full">
         <form className="flex flex-col items-center my-auto">
           <h2 className="text-4xl text-slate-600 font-semibold text-center my-4">
             Sign In
@@ -72,8 +71,7 @@ const SignIn = () => {
             </Link>
           </div>
         </form>
-      </div>
-    </>
+      </main>
   );
 };
 

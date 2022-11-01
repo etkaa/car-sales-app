@@ -24,7 +24,7 @@ const SignUp = () => {
   };
 
   return (
-      <div className="flex flex-col items-center w-full bg-slate-100 h-full">
+      <div className="flex flex-col items-center w-full bg-slate-50 h-full">
         <form className="flex flex-col items-center my-auto">
           <h2 className="text-4xl text-slate-600 font-semibold my-4">
             Create Account

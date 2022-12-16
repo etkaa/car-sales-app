@@ -1,6 +1,6 @@
 import React from "react";
 import FeaturedSection from "../Featured/FeaturedSection";
-import Navbar from "../UI/Navbar";
+import Navbar from "../UI/Navbar/Navbar.jsx";
 import SearchBar from "./SearchBar";
 import Footer from "../UI/Footer";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../UI/Navbar";
+import Navbar from "../UI/Navbar/Navbar.jsx";
 import Footer from "../UI/Footer";
 import ListingDetailContainer from "./ListingDetailContainer";
 

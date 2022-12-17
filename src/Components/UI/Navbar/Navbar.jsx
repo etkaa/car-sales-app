@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserID } from "../../../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
-import { LogoIcon, HamburgerIcon, CloseIcon } from "../Icons";
+import { HamburgerIcon, CloseIcon } from "../Icons.jsx";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const userID = useSelector((state) => state.user.userID);
@@ -35,15 +36,7 @@ const Navbar = () => {
   return (
     <nav className="items-center w-[100%] rounded-b bg-slate-100 shadow-lg">
       <div className="flex justify-between items-center mx-auto max-w-7xl py-1 px-8 sm:px-auto">
-        <Link
-          to="/home"
-          className="sm:w-1/2 md:w-4/12 flex items-center text-center justify-start space-x-3 py-4 hover:text-blue-400 transition duration-150"
-        >
-          <LogoIcon />
-          <h2 className="text-2xl">
-            C A R S <b>N O W</b>
-          </h2>
-        </Link>
+        <Logo />
         <div name="menu svg" className="md:hidden" onClick={toggleMenuHandler}>
           {!isMenuOpen ? <HamburgerIcon /> : <CloseIcon />}
         </div>

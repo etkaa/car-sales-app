@@ -20,7 +20,10 @@ const Carousel = () => {
       name="wrapper"
       className="flex mx-auto justify-center items-center my-3 max-w-7xl"
     >
-      <button onClick={leftScrollHandler} className="hidden md:flex w-16">
+      <button
+        onClick={leftScrollHandler}
+        className="hidden md:flex w-16 opacity-5 hover:opacity-100 transition duration-150"
+      >
         <LeftScrollArrow />
       </button>
       <div
@@ -33,7 +36,10 @@ const Carousel = () => {
           return <ListingCard key={item.id} item={item} />;
         })}
       </div>
-      <button onClick={rightScrollHandler} className="hidden md:flex w-16">
+      <button
+        onClick={rightScrollHandler}
+        className="hidden md:flex w-16 opacity-5 hover:opacity-100 transition duration-150"
+      >
         <RightScrollArrow />
       </button>
     </div>

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUserID } from "../../features/user/userSlice";
 
 const defaultSignInValues = {
   username: "",
@@ -8,8 +11,9 @@ const defaultSignInValues = {
 
 const SignIn = () => {
   const [signInValues, setSignInValues] = useState(defaultSignInValues);
-
   const { username, password } = signInValues;
+
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -17,13 +21,37 @@ const SignIn = () => {
     setSignInValues({ ...signInValues, [name]: value });
   };
 
-  const formSubmitHandler = () => {
-    //send api call
+  const formSubmitHandler = async (event) => {
+    event.preventDefault();
+
+    await axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/auth/login`,
+        {
+          username: signInValues.username,
+          password: signInValues.password,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        dispatch(setUserID(response.data.userID));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <main className="flex flex-col items-center w-full bg-slate-50 h-full">
-      <form className="flex flex-col items-center my-auto">
+      <form
+        onSubmit={formSubmitHandler}
+        className="flex flex-col items-center my-auto"
+      >
         <h2 className="text-4xl text-slate-600 font-semibold text-center my-4">
           Sign In
         </h2>
@@ -54,7 +82,7 @@ const SignIn = () => {
         </button>
         <h3 className="px-3 py-2">OR</h3>
         <button
-          onClick={formSubmitHandler}
+          type="submit"
           className="mx-auto my-2 text-lg text-white bg-pink-400 
         px-6 py-[0.4rem] rounded-lg mt-3 shadow-md hover:bg-purple-400 
         transition duration-100 hover:shadow-lg"

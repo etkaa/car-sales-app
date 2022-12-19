@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import ListingDetail from "./Components/ListingDetail/ListingDetail";
 
 function App() {
-
   return (
     <Routes>
       <Route path="/home" element={<Home />} />

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUserID } from "../../features/user/userSlice";
+import { setUser } from "../../features/user/userSlice";
+import { setFavorites } from "../../features/user/favoritesSlice";
 
 const defaultSignUpValues = {
   firstName: "",
@@ -42,7 +43,8 @@ const SignUp = () => {
         }
       )
       .then((response) => {
-        dispatch(setUserID(response.data.userID));
+        dispatch(setUser(response.data.user));
+        dispatch(setFavorites(response.data.user.favorites)); //find a better way
       })
       .catch((error) => {
         console.log(error);

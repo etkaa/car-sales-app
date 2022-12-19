@@ -1,30 +1,37 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserID } from "../../../features/user/userSlice";
+import { setUser } from "../../../features/user/userSlice";
+import { clearFavorites } from "../../../features/user/favoritesSlice";
 import { useNavigate } from "react-router-dom";
 
 import { HamburgerIcon, CloseIcon } from "../Icons.jsx";
 import Logo from "./Logo";
+// import axios from "axios";
 
 const Navbar = () => {
-  const userID = useSelector((state) => state.user.userID);
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState();
   const navigate = useNavigate();
 
   //get the userID from the store and set the isLoggedIn state when the first time component is rendered
   useEffect(() => {
-    if (userID === null) {
+    if (user === null) {
       setIsLoggedIn(false);
     } else {
       setIsLoggedIn(true);
     }
-  }, [userID]);
+  }, [user]);
 
   const handleSignOut = () => {
-    dispatch(setUserID(null));
-    navigate("/home");
+    //send api call, if successful, then dispatch setUserID(null)
+    // axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
+    //   withCredentials: true,
+    // });
+    dispatch(clearFavorites());
+    dispatch(setUser(null));
+    navigate(0);
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);

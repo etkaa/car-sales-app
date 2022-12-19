@@ -22,7 +22,7 @@ const Carousel = () => {
     >
       <button
         onClick={leftScrollHandler}
-        className="hidden md:flex w-16 opacity-5 hover:opacity-100 transition duration-150"
+        className="hidden md:flex w-16 opacity-20 hover:opacity-100 transition duration-150"
       >
         <LeftScrollArrow />
       </button>
@@ -38,7 +38,7 @@ const Carousel = () => {
       </div>
       <button
         onClick={rightScrollHandler}
-        className="hidden md:flex w-16 opacity-5 hover:opacity-100 transition duration-150"
+        className="hidden md:flex w-16 opacity-20 hover:opacity-100 transition duration-150"
       >
         <RightScrollArrow />
       </button>

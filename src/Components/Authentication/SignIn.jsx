@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUserID } from "../../features/user/userSlice";
+import { setUser } from "../../features/user/userSlice";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { setFavorites } from "../../features/user/favoritesSlice";
 
 const defaultSignInValues = {
   username: "",
@@ -14,6 +17,10 @@ const SignIn = () => {
   const { username, password } = signInValues;
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,7 +46,9 @@ const SignIn = () => {
         }
       )
       .then((response) => {
-        dispatch(setUserID(response.data.userID));
+        dispatch(setUser(response.data.user));
+        dispatch(setFavorites(response.data.user.favorites)); //find a better way
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

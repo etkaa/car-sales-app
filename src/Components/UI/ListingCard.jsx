@@ -1,26 +1,75 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { LikeIcon } from "./Icons";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addToFavorites } from "../../utils/utils";
+import { removeFromFavorites } from "../../utils/utils";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../features/user/favoritesSlice";
 
 const ListingCard = ({ item }) => {
   const price = Number(item.price.original).toLocaleString();
   const mileage = Number(item.miles).toLocaleString();
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.user);
+  const favorites = useSelector((state) => state.favorites.favorites);
+
+  const handleOpenListing = () => {
+    navigate(`/listing/${item.listing.listingId}`);
+  };
+
+  const handleFavorite = async (event) => {
+    event.stopPropagation();
+    //find if listing is already a favorite
+    const listingID = item.listing.listingId;
+    const isFavorite = favorites.includes(
+      (favorite) => favorite === listingID
+    );
+    console.log(isFavorite);
+    if (user !== null) {
+      if (isFavorite) {
+        const resp = await removeFromFavorites(listingID);
+        if (resp === "success") {
+          dispatch(removeFavorite(listingID));
+        }
+      } else {
+        const resp = await addToFavorites(listingID);
+        if (resp === "success") {
+          dispatch(addFavorite(listingID));
+        }
+      }
+    } else {
+      navigate("/authenticate/login");
+    }
+  };
+
   return (
-    <Link
+    <div
       key={item.id}
       className="lg:hover:scale-105 cursor-pointer transition duration-200 
       snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-[22rem] 
-      bg-slate-50 lg:hover:bg-white mx-auto my-auto"
-      to={`/listing/${item.listing.listingId}`}
+      bg-slate-50 lg:hover:bg-white mx-auto my-auto z-0"
+      onClick={handleOpenListing}
     >
-      {/* lg:hover:scale-105 cursor-pointer transition duration-200 
-      snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-80 
-      bg-slate-100 lg:hover:bg-white mx-auto my-auto" */}
-      <img
-        src={item.pictures.cover}
-        className="h-[65%] w-full rounded-t-lg object-cover"
-        alt={item.make}
-      />
+      <div className="h-[65%] w-full rounded-t-lg relative z-2 ">
+        <img
+          src={item.pictures.cover}
+          className="h-full w-full rounded-t-lg object-cover"
+          alt={item.make}
+        />
+        <div
+          className="top-0 right-0 absolute z-10 my-1 mx-1"
+          onClick={handleFavorite}
+        >
+          <LikeIcon fill={"none"} />
+        </div>
+      </div>
       <div className="py-1 flex flex-col justify-between pb-2 h-[17%] font-semibold text-lg px-4">
         {`${item.year} ${item.make} ${item.model}`.substring(0, 29)}
         <h3 className="text-sm">{item.trim}</h3>
@@ -35,7 +84,7 @@ const ListingCard = ({ item }) => {
           {item.listing.listingOwnerId}
         </h3>
       </div>
-    </Link>
+    </div>
   );
 };
 

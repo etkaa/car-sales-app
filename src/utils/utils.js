@@ -17,7 +17,6 @@ export const addToFavorites = async (listingID) => {
       }
     )
     .then((response) => {
-      console.log(response);
       if (response.status === 200) {
         console.log("Added to favorites! / utils.js");
         result = "success";

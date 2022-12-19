@@ -19,6 +19,7 @@ const ListingCard = ({ item }) => {
 
   const user = useSelector((state) => state.user.user);
   const favorites = useSelector((state) => state.favorites.favorites);
+  const isListingFavorite = favorites.includes(item.listing.listingId);
 
   const handleOpenListing = () => {
     navigate(`/listing/${item.listing.listingId}`);
@@ -26,14 +27,9 @@ const ListingCard = ({ item }) => {
 
   const handleFavorite = async (event) => {
     event.stopPropagation();
-    //find if listing is already a favorite
     const listingID = item.listing.listingId;
-    const isFavorite = favorites.includes(
-      (favorite) => favorite === listingID
-    );
-    console.log(isFavorite);
     if (user !== null) {
-      if (isFavorite) {
+      if (isListingFavorite) {
         const resp = await removeFromFavorites(listingID);
         if (resp === "success") {
           dispatch(removeFavorite(listingID));
@@ -67,7 +63,7 @@ const ListingCard = ({ item }) => {
           className="top-0 right-0 absolute z-10 my-1 mx-1"
           onClick={handleFavorite}
         >
-          <LikeIcon fill={"none"} />
+          <LikeIcon fill={isListingFavorite ? "red" : "none"} />
         </div>
       </div>
       <div className="py-1 flex flex-col justify-between pb-2 h-[17%] font-semibold text-lg px-4">

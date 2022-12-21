@@ -3,6 +3,7 @@ import Authenticate from "./Components/Authentication/Authenticate";
 import Home from "./Components/Home/Home";
 import { Routes, Route } from "react-router-dom";
 import ListingDetail from "./Components/ListingDetail/ListingDetail";
+import Favorites from "./Components/Favorites/Favorites";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         element={<Authenticate returningUser={false} />}
       />
       <Route path="/listing/:listingID" element={<ListingDetail />} />
+      <Route path="/user/favorites" element={<Favorites />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

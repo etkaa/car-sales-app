@@ -106,7 +106,8 @@ export const LikeIcon = ({ fill }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-8 h-8 stroke-slate-100 hover:stroke-red-400 transition duration-200"
+      className="w-8 h-8 stroke-slate-100 hover:stroke-red-500 
+      hover:scale-110 transition duration-200"
     >
       <path
         strokeLinecap="round"

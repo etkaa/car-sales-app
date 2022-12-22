@@ -73,7 +73,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/authenticate/signup"
-                className="font-medium text-xl transition duration-100 text-slate-700 bg-yellow-400 hover:text-white hover:bg-purple-400 py-2 rounded-lg px-2"
+                className="font-medium text-xl transition duration-200 text-white bg-purple-600 hover:text-slate-700 hover:bg-yellow-400 py-2 rounded-xl px-3"
               >
                 Sign Up
               </Link>

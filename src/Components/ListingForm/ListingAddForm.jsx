@@ -2,7 +2,7 @@ import React from "react";
 
 const ListingForm = () => {
   const style =
-    "px-2 py-2 w-[90%] mx-auto my-auto rounded-xl text-center bg-slate-200 placeholder:text-slate-400";
+    "px-2 py-2 outline-none w-[90%] mx-auto my-auto rounded-xl text-center bg-slate-200 placeholder:text-slate-400";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,10 +10,10 @@ const ListingForm = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-5 my-6 w-[60rem] py-2">
+    <div className="flex flex-col space-y-5 my-auto max-w-[60rem] py-2">
       <h1 className="text-2xl text-center">Create a Listing</h1>
       <form className="items-center text-center" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-y-4 max-w-[25rem] mx-auto">
+        <div className="grid grid-cols-2 gap-y-4 max-w-[25rem] xl:max-w-[40rem] mx-auto">
           <input
             className={style}
             type="text"
@@ -114,7 +114,7 @@ const ListingForm = () => {
         </div>
         <button
           type="submit"
-          className="text-lg mx-auto px-4 py-2 my-4 bg-purple-600 text-slate-100 rounded-xl"
+          className="text-lg mx-auto px-4 py-2 mt-4 bg-purple-600 text-slate-100 rounded-xl"
         >
           Submit
         </button>

@@ -1,17 +1,13 @@
 import React from "react";
 import FeaturedSection from "../Featured/FeaturedSection";
-import Navbar from "../UI/Navbar/Navbar.jsx";
 import SearchBar from "./SearchBar";
-import Footer from "../UI/Footer";
 
 const Home = () => {
   return (
     //@@@@@@@@@@@ WHEN THIS DIV IS FLEX, CAROUSEL IS NOT SHRINKING PROPERLY @@@@@@@@@
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <div className="flex flex-col">
       <SearchBar />
       <FeaturedSection />
-      <Footer />
     </div>
   );
 };

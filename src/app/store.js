@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "../features/user/userSlice";
-import favoritesReducer from "../features/user/favoritesSlice";
+import favoritesReducer from "../features/favorites/favoritesSlice";
 
 const persistConfig = {
   key: "carsnow",

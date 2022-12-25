@@ -793,7 +793,7 @@ export const DUMMY_CARS = [
     engine: {
       electric: true,
       capacity: "95Kwh",
-      cylinders: "n/A",
+      cylinders: "0",
       horsepower: "987",
       torque: "1056",
     },
@@ -1047,7 +1047,7 @@ export const DUMMY_CARS = [
     engine: {
       electric: true,
       capacity: "95Kwh",
-      cylinders: "n/A",
+      cylinders: "0",
       horsepower: "987",
       torque: "1056",
     },
@@ -1301,7 +1301,7 @@ export const DUMMY_CARS = [
     engine: {
       electric: true,
       capacity: "95Kwh",
-      cylinders: "n/A",
+      cylinders: "0",
       horsepower: "987",
       torque: "1056",
     },
@@ -1555,7 +1555,7 @@ export const DUMMY_CARS = [
     engine: {
       electric: true,
       capacity: "95Kwh",
-      cylinders: "n/A",
+      cylinders: "0",
       horsepower: "987",
       torque: "1056",
     },

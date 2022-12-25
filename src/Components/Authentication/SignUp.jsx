@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
-import { setFavorites } from "../../features/user/favoritesSlice";
+import { setFavorites } from "../../features/favorites/favoritesSlice";
 
 const defaultSignUpValues = {
   firstName: "",

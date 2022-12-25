@@ -2,12 +2,11 @@ import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../features/user/userSlice";
-import { clearFavorites } from "../../../features/user/favoritesSlice";
+import { clearFavorites } from "../../../features/favorites/favoritesSlice";
 import { useNavigate } from "react-router-dom";
 
 import { HamburgerIcon, CloseIcon } from "../Icons.jsx";
 import Logo from "./Logo";
-// import axios from "axios";
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.user);
@@ -79,12 +78,26 @@ const Navbar = () => {
               </Link>
             </Fragment>
           ) : (
-            <button
-              onClick={handleSignOut}
-              className="font-medium text-xl transition duration-100 text-slate-700 bg-yellow-400 hover:text-white hover:bg-purple-400 py-2 rounded-lg px-2"
-            >
-              Sign Out
-            </button>
+            <Fragment>
+              <Link
+                to="/user/favorites"
+                className="text-xl hover:text-gray-400 transition duration-100 py-4"
+              >
+                Favorites
+              </Link>
+              <Link
+                to="/user/profile"
+                className="text-xl hover:text-gray-400 transition duration-100 py-4"
+              >
+                Profile
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className="font-medium text-xl transition duration-100 text-slate-700 bg-yellow-400 hover:text-white hover:bg-purple-400 py-2 rounded-lg px-2"
+              >
+                Sign Out
+              </button>
+            </Fragment>
           )}
         </div>
       </div>
@@ -96,18 +109,27 @@ const Navbar = () => {
           <Fragment>
             <Link
               to="/authenticate/login"
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
               className="block hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
               Login
             </Link>
             <Link
               to="/authenticate/signup"
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
               className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
               Sign Up
             </Link>
             <Link
               to="/contact"
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
               className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
               Contact
@@ -116,13 +138,28 @@ const Navbar = () => {
         ) : (
           <Fragment>
             <Link
+              to="/user/favorites"
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
+              className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
+            >
+              Favorites
+            </Link>
+            <Link
               to="/profile"
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
               className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
               Profile
             </Link>
             <Link
               to="/messages"
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
               className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
               Messages

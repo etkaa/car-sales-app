@@ -8,7 +8,7 @@ import { removeFromFavorites } from "../../utils/utils";
 import {
   addFavorite,
   removeFavorite,
-} from "../../features/user/favoritesSlice";
+} from "../../features/favorites/favoritesSlice";
 
 const ListingCard = ({ item }) => {
   const price = Number(item.price.original).toLocaleString();
@@ -63,7 +63,7 @@ const ListingCard = ({ item }) => {
           className="top-0 right-0 absolute z-10 my-1 mx-1"
           onClick={handleFavorite}
         >
-          <LikeIcon fill={isListingFavorite ? "red" : "none"} />
+          <LikeIcon liked={isListingFavorite} />
         </div>
       </div>
       <div className="py-1 flex flex-col justify-between pb-2 h-[17%] font-semibold text-lg px-4">

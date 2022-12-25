@@ -5,7 +5,7 @@ import { batch, useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { setFavorites } from "../../features/user/favoritesSlice";
+import { setFavorites } from "../../features/favorites/favoritesSlice";
 
 const defaultSignInValues = {
   username: "",

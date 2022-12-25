@@ -6,6 +6,7 @@ html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  
 }
 
 body {
@@ -23,3 +24,5 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+

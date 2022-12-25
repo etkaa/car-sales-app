@@ -6,8 +6,14 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {
-        "header-img": "url('/assets/header-img.jpg')",
+      animation: {
+        rotate: "rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite",
+      },
+      rotate: {
+        45: "rotate-45",
+        135: "rotate-135",
+        225: "rotate-225",
+        315: "rotate-315",
       },
     },
   },

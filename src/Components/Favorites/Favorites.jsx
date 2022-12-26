@@ -1,29 +1,85 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import FavoritesItem from "./FavoritesItem";
-import { SignInIcon } from "../UI/Icons";
-// import axios from "axios";
-import { DUMMY_CARS } from "../AdvancedSearch/data";
-import NoFavorite from "./NoFavorite";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchFavoriteListingDetails } from "../../features/favorites/favoritesSlice";
+
 import { Link } from "react-router-dom";
+import { SignInIcon } from "../UI/Icons";
+import FavoritesItem from "./FavoritesItem";
+import NoFavorite from "./NoFavorite";
+import Loading from "../UI/Loading";
 
 const Favorites = () => {
+  /////////////////////////// Redux ///////////////////////////
+  //get the current user from redux state
   const user = useSelector((state) => state.user.user);
-  const favorites = useSelector((state) => state.favorites.favorites);
 
-  //find the listings in the DUMMY_CARS array that match the user's favorites array
-  const foundUserFavorites = DUMMY_CARS.filter((car) => {
-    return favorites.includes(car.listing.listingId);
+  const dispatch = useDispatch();
+
+  const favoritesStatus = useSelector((state) => state.favorites.status);
+  console.log({ "this is status ": favoritesStatus });
+  //get the status of async thunk
+
+  useEffect(() => {
+    if (favoritesStatus === "idle") {
+      //if status is idle, dispatch the async thunk
+      console.log(
+        "Dispatching fetchFavoriteListingDetails() from Favorites.jsx"
+      );
+      dispatch(fetchFavoriteListingDetails());
+    }
   });
-  //We will need to implement this logic on the backend and get the listings from there.
-  //because we can't hold all the listings data here in the frontend.
+  //dispatch the async thunk when component mounts
 
-  //   const favoriteListings = async () => {
-  //     axios.get();
-  //   };
+  const favoriteListings = useSelector(
+    (state) => state.favorites.favoriteObjects
+  );
+  console.log({ "this is favorite listings ": favoriteListings });
+  //get the array of listings
 
-  //make an api call to get listings from the database that match the favorites array
-  //map over the array and return a favorites item for each listing
+  const error = useSelector((state) => state.favorites.error);
+  //look if there is any error
+
+  /////////////////////////// Redux ///////////////////////////
+
+  ////////////////Wait for content to load////////////////////
+
+  let content;
+
+  if (user !== null) {
+    //if user is logged in
+    if (favoritesStatus === "loading") {
+      content = <Loading />;
+    } else if (favoritesStatus === "succeeded") {
+      if (favoriteListings.length === 0) {
+        content = <NoFavorite />;
+      } else {
+        content = favoriteListings?.map((item) => {
+          return <FavoritesItem key={item._id} item={item} />;
+        });
+      }
+    } else if (favoritesStatus === "failed") {
+      content = <div>{"We've got some error over here. " + error}</div>;
+    }
+  } else {
+    <div
+      className="flex flex-col justify-around items-center min-h-[10rem] max-w-[30rem]
+       bg-slate-50 rounded-xl shadow-md text-center px-4 py-4"
+    >
+      <h2 className="font-medium text-2xl">
+        Please sign in to see your favorites.
+      </h2>
+      <Link
+        to={"/authenticate/login"}
+        className="text-xl transition duration-200
+text-white bg-purple-500 hover:bg-pink-500 py-2 rounded-xl px-3
+max-w-[15rem] flex"
+      >
+        <SignInIcon />
+        Sign In
+      </Link>
+    </div>;
+  }
 
   return (
     <main className="flex justify-between my-10">
@@ -32,40 +88,15 @@ const Favorites = () => {
       max-w-7xl my-auto mx-auto"
       >
         <div className="text-center py-3 px-3 h-[20%]">
-          <h1 className="text-3xl">Favorites {`(${favorites.length})`}</h1>
+          <h1 className="text-3xl">
+            Favorites {`(${favoriteListings?.length})`}
+          </h1>
         </div>
         <div
           className="flex flex-col space-y-4 justify-between items-center 
          min-h-[80%] px-3 py-3 my-auto"
         >
-          {user !== null ? ( //if user is signed in
-            foundUserFavorites.length > 0 ? ( //if user has favorites
-              foundUserFavorites.map((item) => {
-                //map over the favorites array
-                return <FavoritesItem key={item.id} item={item} />;
-              })
-            ) : (
-              <NoFavorite /> //if user has no favorites show noFavorites component
-            )
-          ) : (
-            <div
-              className="flex flex-col justify-around items-center min-h-[10rem] max-w-[30rem] bg-slate-50 
-  rounded-xl shadow-md text-center px-4 py-4"
-            >
-              <h2 className="font-medium text-2xl">
-                Please sign in to see your favorites.
-              </h2>
-              <Link
-                to={"/authenticate/login"}
-                className="text-xl transition duration-200
-       text-white bg-purple-500 hover:bg-pink-500 py-2 rounded-xl px-3
-       max-w-[15rem] flex"
-              >
-                <SignInIcon />
-                Sign In
-              </Link>
-            </div>
-          )}
+          {content}
         </div>
       </div>
     </main>

@@ -1,13 +1,12 @@
 import axios from "axios";
 
-export const addToFavorites = async (listingID) => {
+export const addToFavorites = async (listingId) => {
   var result;
-
   await axios
     .post(
       `${process.env.REACT_APP_API_URL}/user/favorites/add`,
       {
-        listingID: listingID,
+        listingID: listingId,
       },
       {
         withCredentials: true,
@@ -31,13 +30,13 @@ export const addToFavorites = async (listingID) => {
   return result;
 };
 
-export const removeFromFavorites = async (listingID) => {
+export const removeFromFavorites = async (listingId) => {
   var result;
   await axios
     .post(
       `${process.env.REACT_APP_API_URL}/user/favorites/remove`,
       {
-        listingID: listingID,
+        listingID: listingId,
       },
       {
         withCredentials: true,

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { batch, useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
+import { fetchFavoriteListingDetails } from "../../features/favorites/favoritesSlice";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { setFavorites } from "../../features/favorites/favoritesSlice";
 
 const defaultSignInValues = {
   username: "",
@@ -46,7 +46,7 @@ const SignIn = () => {
       .then((response) => {
         batch(() => {
           dispatch(setUser(response.data.user));
-          dispatch(setFavorites(response.data.user.favorites));
+          dispatch(fetchFavoriteListingDetails());
         });
         navigate(from, { replace: true });
       })

@@ -18,26 +18,31 @@ const ListingCard = ({ item }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.user);
-  const favorites = useSelector((state) => state.favorites.favorites);
-  const isListingFavorite = favorites.includes(item.listing.listingId);
+  const favoriteListings = useSelector(
+    (state) => state.favorites.favoriteObjects
+  );
+  const isListingFavorite = favoriteListings.some(
+    (listing) => listing._id === item._id
+  );
 
   const handleOpenListing = () => {
-    navigate(`/listing/${item.listing.listingId}`);
+    navigate(`/listing/${item._id}`);
   };
 
   const handleFavorite = async (event) => {
     event.stopPropagation();
-    const listingID = item.listing.listingId;
     if (user !== null) {
       if (isListingFavorite) {
-        const resp = await removeFromFavorites(listingID);
+        const resp = await removeFromFavorites(item._id);
+        console.log({ "response from removeFromFavorites": resp });
         if (resp === "success") {
-          dispatch(removeFavorite(listingID));
+          dispatch(removeFavorite(item._id));
         }
       } else {
-        const resp = await addToFavorites(listingID);
+        const resp = await addToFavorites(item._id);
+        console.log({ "response from addToFavorites": resp });
         if (resp === "success") {
-          dispatch(addFavorite(listingID));
+          dispatch(addFavorite(item));
         }
       }
     } else {
@@ -47,7 +52,7 @@ const ListingCard = ({ item }) => {
 
   return (
     <div
-      key={item.id}
+      key={item._id}
       className="lg:hover:scale-105 cursor-pointer transition duration-200 
       snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-[22rem] 
       bg-slate-50 lg:hover:bg-white mx-auto my-auto z-0"
@@ -62,8 +67,9 @@ const ListingCard = ({ item }) => {
         <div
           className="top-0 right-0 absolute z-10 my-1 mx-1"
           onClick={handleFavorite}
+          key={item._id}
         >
-          <LikeIcon liked={isListingFavorite} />
+          <LikeIcon key={item._id} liked={isListingFavorite} />
         </div>
       </div>
       <div className="py-1 flex flex-col justify-between pb-2 h-[17%] font-semibold text-lg px-4">

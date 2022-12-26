@@ -11,13 +11,15 @@ const FavoritesItem = ({ item }) => {
 
   const handleRemoveFromFavorites = async (event) => {
     event.stopPropagation();
+    console.log("handleRemoveFromFavorites() called");
     setLiked(!liked);
-    const listingID = item.listing.listingId;
+    const listingID = item._id;
+    console.log("listing id " + listingID);
     //wait for 2 second before removing from favorites
     setTimeout(async () => {
       const resp = await removeFromFavorites(listingID);
       if (resp === "success") {
-        dispatch(removeFavorite(listingID));
+        dispatch(removeFavorite(item._id));
       }
     }, 1500);
   };

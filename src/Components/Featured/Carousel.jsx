@@ -1,11 +1,51 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import ListingCard from "../UI/ListingCard";
 import LeftScrollArrow from "./LeftScrollArrow";
 import RightScrollArrow from "./RightScrollArrow";
-import { DUMMY_CARS } from "../AdvancedSearch/data";
+
+import { fetchListings } from "../../features/listings/featuredSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import Loading from "../UI/Loading";
 
 const Carousel = () => {
   const carousel = useRef();
+
+  /////////////////////////// Redux ///////////////////////////
+
+  const dispatch = useDispatch();
+  //get the status of async thunk
+  const status = useSelector((state) => state.featured.status);
+  //get the array of listings
+  const featuredListings = useSelector((state) => state.featured.listings);
+  //look if there is any error
+  const error = useSelector((state) => state.featured.error);
+
+  useEffect(() => {
+    if (status === "idle") {
+      //if status is idle, dispatch the async thunk
+      console.log("Dispatching fetchListings() from Carousel.jsx");
+      dispatch(fetchListings());
+    }
+  }, [status, dispatch]);
+
+  /////////////////////////// Redux ///////////////////////////
+
+  ////////////////Wait for content to load////////////////////
+
+  let content;
+
+  if (status === "loading") {
+    content = <Loading />;
+  } else if (status === "succeeded") {
+    content = featuredListings?.map((item) => {
+      return <ListingCard key={item._id} item={item} />;
+    });
+  } else if (status === "failed") {
+    content = <div>{error}</div>;
+  }
+
+  ////////////////Wait for content to load////////////////////
 
   const leftScrollHandler = () => {
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -32,9 +72,10 @@ const Carousel = () => {
            space-x-4 px-4 min-w-[22rem] overflow-x-auto w-[100%] my-auto 
            md:mx-auto place-items-center h-96"
       >
-        {DUMMY_CARS.map((item) => {
-          return <ListingCard key={item.id} item={item} />;
-        })}
+        {/* {array.map((item) => {
+          return <ListingCard key={item._id} item={item} />;
+        })} */}
+        {content}
       </div>
       <button
         onClick={rightScrollHandler}

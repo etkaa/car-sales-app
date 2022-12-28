@@ -44,7 +44,7 @@ const FavoritesItem = ({ item }) => {
         />
       </Link>
       {!liked ? (
-        <div className="flex flex-col items-center justify-around mx-auto">
+        <div className="flex flex-col items-center justify-around mx-auto px-4 py-4">
           <h1 className="text-center text-xl md:text-2xl font-normal text-slate-500 animate-pulse">
             Removing from your favorites...
           </h1>

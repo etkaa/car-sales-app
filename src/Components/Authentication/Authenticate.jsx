@@ -7,7 +7,7 @@ const Authenticate = ({ returningUser }) => {
     <div className="flex flex-col justify-between">
       <div
         className="flex flex-col items-center justify-center 
-      min-w-[18rem] w-[22rem] mx-auto my-10 h-[36rem] 
+      min-w-[18rem] w-[22rem] mx-auto my-10 max-h-[40rem] 
       rounded-sm shadow-xl"
       >
         {returningUser ? <SignIn /> : <SignUp />}

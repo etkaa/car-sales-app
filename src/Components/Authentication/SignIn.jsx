@@ -13,6 +13,7 @@ const defaultSignInValues = {
 };
 
 const SignIn = () => {
+  const [error, setError] = useState(false);
   const [signInValues, setSignInValues] = useState(defaultSignInValues);
   const { username, password } = signInValues;
 
@@ -23,11 +24,15 @@ const SignIn = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    setError(false);
     setSignInValues({ ...signInValues, [name]: value });
   };
 
   const formSubmitHandler = async (event) => {
     event.preventDefault();
+
+    //additional check for empty string
+    if (username.trim() === "" || password.trim() === "") return;
 
     await axios
       .post(
@@ -51,12 +56,13 @@ const SignIn = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        setError(true);
+        console.log(error.response);
       });
   };
 
   return (
-    <main className="flex flex-col items-center w-full bg-slate-50 h-full">
+    <main className="flex flex-col items-center w-full bg-slate-50 min-h-full py-8">
       <form
         onSubmit={formSubmitHandler}
         className="flex flex-col items-center my-auto"
@@ -65,23 +71,35 @@ const SignIn = () => {
           Sign In
         </h2>
         <input
-          className="flex mx-auto px-3 py-2 my-3 outline-none w-[16rem] max-w-lg shadow-md bg-white rounded-lg"
-          type="text"
+          className={`${
+            error && `border-2 border-red-500`
+          } flex mx-auto px-3 py-2 my-3 outline-none w-[16rem] max-w-lg shadow-md bg-white rounded-lg`}
+          type="email"
           name="username"
-          placeholder="Username"
+          placeholder="Email Address"
           value={username}
           onChange={handleChange}
           required
         ></input>
         <input
-          className="flex mx-auto px-3 py-2 my-3 outline-none w-[16rem] max-w-lg shadow-md bg-white rounded-lg"
+          className={`${
+            error && `border-2 border-red-500`
+          } flex mx-auto px-3 py-2 my-3 outline-none w-[16rem] max-w-lg shadow-md bg-white rounded-lg`}
           type="password"
           name="password"
           placeholder="Password"
           value={password}
           onChange={handleChange}
+          minLength="8"
           required
         ></input>
+        {error && (
+          <div className="text-center transition-opacity">
+            <p className="text-md font-bold my-3 mx-auto px-5 w-[70%] text-slate-50 bg-red-500 rounded-md py-2">
+              Please check your credentials and try again!
+            </p>
+          </div>
+        )}
         <button
           className="mx-auto my-2 text-lg text-white bg-pink-400 
         px-6 py-[0.4rem] rounded-lg mt-3 shadow-md hover:bg-purple-400 transition

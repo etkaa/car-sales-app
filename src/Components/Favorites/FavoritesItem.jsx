@@ -23,6 +23,11 @@ const FavoritesItem = ({ item }) => {
     }, 1500);
   };
 
+  //capitalize the first letter of a string
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <div
       className="flex min-h-[12rem] max-h-[12rem] min-w-[22rem] max-w-[30rem] bg-slate-50 
@@ -51,10 +56,10 @@ const FavoritesItem = ({ item }) => {
             className="flex flex-col mx-auto space-y-2 w-[80%]"
           >
             <div
-              className="flex flex-col space-y-2 md:space-y-4 justify-between my-auto"
+              className="min-h-full flex flex-col space-y-2 justify-between my-auto"
               name="primary details"
             >
-              <h1 className="text-xl font-normal">{`${
+              <h1 className="text-xl font-medium">{`${
                 item.year + " " + item.make + " " + item.model
               }`}</h1>
               <h1 className="text-lg">{`${(
@@ -62,11 +67,11 @@ const FavoritesItem = ({ item }) => {
                 " - " +
                 item.engine.capacity
               ).substring(0, 30)}`}</h1>
-              <h1 className="text-lg">{`${item.condition} - ${Number(
+              <h1 className="text-lg">{`${capitalize(item.condition)} - ${Number(
                 item.miles
               ).toLocaleString()} miles  `}</h1>
               <div className="flex flex-col my-auto">
-                <h1 className="text-lg font-bold my-auto">{`$${Number(
+                <h1 className="text-xl font-bold my-auto">{`$${Number(
                   item.price.original
                 ).toLocaleString()}`}</h1>
                 {/* <h1 className="text-md font-normal">{`Listed at ${item.listing.createdAt.toLocaleString(
@@ -78,7 +83,7 @@ const FavoritesItem = ({ item }) => {
           </div>
           <div
             name="contact_details"
-            className="flex flex-col justify-between w-[10%] text-center items-center py-1 px-1"
+            className="flex flex-col justify-between w-[15%] text-center items-center py-1 px-1 mx-auto"
           >
             <div onClick={handleRemoveFromFavorites}>
               <LikeIcon liked={liked} />

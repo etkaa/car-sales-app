@@ -32,7 +32,6 @@ const Navbar = () => {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log("logout successful");
           dispatch(setUser(null));
           dispatch(clearFavorites());
           navigate(0);

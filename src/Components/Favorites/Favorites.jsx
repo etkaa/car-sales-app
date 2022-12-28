@@ -96,7 +96,7 @@ max-w-[15rem] flex"
         </div>
         <div
           className="flex flex-col space-y-4 justify-between items-center 
-         min-h-[80%] px-3 py-3 my-auto"
+         min-h-[80%] px-1 py-3 my-auto"
         >
           {content}
         </div>

@@ -34,13 +34,13 @@ const ListingCard = ({ item }) => {
     if (user !== null) {
       if (isListingFavorite) {
         const resp = await removeFromFavorites(item._id);
-        console.log({ "response from removeFromFavorites": resp });
+        // console.log({ "response from removeFromFavorites": resp });
         if (resp === "success") {
           dispatch(removeFavorite(item._id));
         }
       } else {
         const resp = await addToFavorites(item._id);
-        console.log({ "response from addToFavorites": resp });
+        // console.log({ "response from addToFavorites": resp });
         if (resp === "success") {
           dispatch(addFavorite(item));
         }

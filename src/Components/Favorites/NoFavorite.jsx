@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NoFavorite = () => {
   return (
     <div
-      className="flex flex-col justify-around items-center min-h-[10rem] max-w-[30rem] bg-slate-50 
+      className="flex flex-col justify-around items-center min-h-[12rem] min-w-[22rem] max-w-[30rem] bg-slate-50 
   rounded-xl shadow-md text-center px-4 py-4"
     >
       <h2 className="font-medium text-2xl">You have no favorite listing.</h2>

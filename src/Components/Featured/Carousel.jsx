@@ -24,7 +24,6 @@ const Carousel = () => {
   useEffect(() => {
     if (status === "idle") {
       //if status is idle, dispatch the async thunk
-      console.log("Dispatching fetchListings() from Carousel.jsx");
       dispatch(fetchListings());
     }
   }, [status, dispatch]);
@@ -48,11 +47,11 @@ const Carousel = () => {
   ////////////////Wait for content to load////////////////////
 
   const leftScrollHandler = () => {
-    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+    carousel.current.scrollLeft -= carousel.current.offsetWidth * 0.95;
   };
 
   const rightScrollHandler = () => {
-    carousel.current.scrollLeft += carousel.current.offsetWidth;
+    carousel.current.scrollLeft += carousel.current.offsetWidth * 0.95;
   };
 
   return (
@@ -72,9 +71,6 @@ const Carousel = () => {
            space-x-4 px-4 min-w-[22rem] overflow-x-auto w-[100%] my-auto 
            md:mx-auto place-items-center h-96"
       >
-        {/* {array.map((item) => {
-          return <ListingCard key={item._id} item={item} />;
-        })} */}
         {content}
       </div>
       <button

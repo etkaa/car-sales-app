@@ -11,10 +11,9 @@ const FavoritesItem = ({ item }) => {
 
   const handleRemoveFromFavorites = async (event) => {
     event.stopPropagation();
-    console.log("handleRemoveFromFavorites() called");
     setLiked(!liked);
     const listingID = item._id;
-    console.log("listing id " + listingID);
+    // console.log("listing id " + listingID);
     //wait for 2 second before removing from favorites
     setTimeout(async () => {
       const resp = await removeFromFavorites(listingID);
@@ -26,12 +25,12 @@ const FavoritesItem = ({ item }) => {
 
   return (
     <div
-      className="flex min-h-[5rem] max-h-[10rem] w-full bg-slate-50 
+      className="flex min-h-[12rem] max-h-[12rem] min-w-[22rem] max-w-[30rem] bg-slate-50 
     rounded-xl shadow-md"
     >
       <Link
-        to={`/listing/${item.listing.listingId}`}
-        className="left-0 w-[30%] h-[10rem]"
+        to={`/listing/${item._id}`}
+        className="left-0 max-w-[35%] max-h-[12rem]"
       >
         <img
           src={item.pictures.cover}
@@ -46,12 +45,15 @@ const FavoritesItem = ({ item }) => {
           </h1>
         </div>
       ) : (
-        <div className="flex justify-between mx-auto w-[80%] py-3 px-2">
+        <div className="flex justify-between mx-auto w-[65%] py-2 px-2">
           <div
             name="listing_details"
-            className="flex flex-col mx-auto space-y-2 w-[70%]"
+            className="flex flex-col mx-auto space-y-2 w-[80%]"
           >
-            <div className="flex flex-col space-y-2" name="primary details">
+            <div
+              className="flex flex-col space-y-2 md:space-y-4 justify-between my-auto"
+              name="primary details"
+            >
               <h1 className="text-xl font-normal">{`${
                 item.year + " " + item.make + " " + item.model
               }`}</h1>
@@ -60,23 +62,23 @@ const FavoritesItem = ({ item }) => {
                 " - " +
                 item.engine.capacity
               ).substring(0, 30)}`}</h1>
-              <h1 className="text-lg hidden sm:flex">{`${
-                item.condition
-              } - ${Number(item.miles).toLocaleString()} miles  `}</h1>
-            </div>
-            <div className="flex flex-col my-auto">
-              <h1 className="text-lg font-bold my-auto">{`$${Number(
-                item.price.original
-              ).toLocaleString()}`}</h1>
-              {/* <h1 className="text-md font-normal">{`Listed at ${item.listing.createdAt.toLocaleString(
-              "en",
-              options
-            )}`}</h1> */}
+              <h1 className="text-lg">{`${item.condition} - ${Number(
+                item.miles
+              ).toLocaleString()} miles  `}</h1>
+              <div className="flex flex-col my-auto">
+                <h1 className="text-lg font-bold my-auto">{`$${Number(
+                  item.price.original
+                ).toLocaleString()}`}</h1>
+                {/* <h1 className="text-md font-normal">{`Listed at ${item.listing.createdAt.toLocaleString(
+                "en",
+                options
+              )}`}</h1> */}
+              </div>
             </div>
           </div>
           <div
             name="contact_details"
-            className="flex flex-col justify-between w-[20%] text-center items-center py-1 px-1"
+            className="flex flex-col justify-between w-[10%] text-center items-center py-1 px-1"
           >
             <div onClick={handleRemoveFromFavorites}>
               <LikeIcon liked={liked} />

@@ -17,10 +17,10 @@ export const addToFavorites = async (listingId) => {
     )
     .then((response) => {
       if (response.status === 200) {
-        console.log("Added to favorites! / utils.js");
+        // console.log("Added to favorites! / utils.js");
         result = "success";
       } else {
-        console.log("Error adding to favorites!");
+        console.log("Error adding to favorites! / utils.js");
         result = "failure";
       }
     })
@@ -47,10 +47,10 @@ export const removeFromFavorites = async (listingId) => {
     )
     .then((response) => {
       if (response.status === 200) {
-        console.log("Removed from favorites! / utils.js");
+        // console.log("Removed from favorites! / utils.js");
         result = "success";
       } else {
-        console.log("Error removing from favorites!");
+        console.log("Error removing from favorites! / utils.js");
         result = "failure";
       }
     })
@@ -77,10 +77,10 @@ export const clearAllFavorites = async () => {
     .then((response) => {
       if (response.status === 200) {
         result = "success";
-        console.log("Cleared favorites! / utils.js");
+        // console.log("Cleared favorites! / utils.js");
       } else {
         result = "failure";
-        console.log("Error clearing favorites!");
+        console.log("Error clearing favorites! / utils.js");
       }
     })
     .catch((error) => {
@@ -108,7 +108,7 @@ export const getListingDetails = async (listingId) => {
       if (response.status === 200) {
         result = response.data.listing;
       } else {
-        console.log("Error getting listing details!");
+        console.log("Error getting listing details! / utils.js");
       }
     })
     .catch((error) => {

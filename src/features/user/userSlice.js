@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
 
 const initialState = {
   user: null,
@@ -12,11 +13,14 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    clearStore: () => {
+      storage.removeItem("persist:carsnow");
+    }
   },
 });
 
 // console.log(userSlice);
 
-export const { setUser } = userSlice.actions;
+export const { setUser, clearStore } = userSlice.actions;
 
 export default userSlice.reducer;

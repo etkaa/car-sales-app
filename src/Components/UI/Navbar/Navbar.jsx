@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../features/user/userSlice";
 import { clearFavorites } from "../../../features/favorites/favoritesSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { HamburgerIcon, CloseIcon } from "../Icons.jsx";
 import Logo from "./Logo";
@@ -25,12 +26,20 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     //send api call, if successful, then dispatch setUserID(null)
-    // axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
-    //   withCredentials: true,
-    // });
-    dispatch(clearFavorites());
-    dispatch(setUser(null));
-    navigate(0);
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("logout successful");
+          dispatch(setUser(null));
+          dispatch(clearFavorites());
+          navigate(0);
+        } else {
+          console.log("logout failed");
+        }
+      });
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);

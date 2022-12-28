@@ -88,3 +88,32 @@ export const clearAllFavorites = async () => {
     });
   return result;
 };
+
+export const getListingDetails = async (listingId) => {
+  var result;
+  await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/listing/getListingById`,
+      {
+        listingID: listingId,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        result = response.data.listing;
+      } else {
+        console.log("Error getting listing details!");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      console.log(error.response.data);
+    });
+  return result;
+};

@@ -11,22 +11,23 @@ import Loading from "../UI/Loading";
 
 const Favorites = () => {
   /////////////////////////// Redux ///////////////////////////
-  //get the current user from redux state
+
   const user = useSelector((state) => state.user.user);
+  //get the current user from redux state
 
   const dispatch = useDispatch();
 
   const favoritesStatus = useSelector((state) => state.favorites.status);
-  console.log({ "this is status ": favoritesStatus });
   //get the status of async thunk
 
   useEffect(() => {
-    if (favoritesStatus === "idle") {
-      //if status is idle, dispatch the async thunk
-      console.log(
-        "Dispatching fetchFavoriteListingDetails() from Favorites.jsx"
-      );
-      dispatch(fetchFavoriteListingDetails());
+    if (user) {
+      if (favoritesStatus === "idle") {
+        //if status is idle, dispatch the async thunk
+        dispatch(fetchFavoriteListingDetails());
+      }
+    } else {
+      return;
     }
   });
   //dispatch the async thunk when component mounts
@@ -34,7 +35,6 @@ const Favorites = () => {
   const favoriteListings = useSelector(
     (state) => state.favorites.favoriteObjects
   );
-  console.log({ "this is favorite listings ": favoriteListings });
   //get the array of listings
 
   const error = useSelector((state) => state.favorites.error);
@@ -42,7 +42,7 @@ const Favorites = () => {
 
   /////////////////////////// Redux ///////////////////////////
 
-  ////////////////Wait for content to load////////////////////
+  ////////////////Render content conditionally////////////////////
 
   let content;
 
@@ -62,23 +62,25 @@ const Favorites = () => {
       content = <div>{"We've got some error over here. " + error}</div>;
     }
   } else {
-    <div
-      className="flex flex-col justify-around items-center min-h-[10rem] max-w-[30rem]
+    content = (
+      <div
+        className="flex flex-col justify-around items-center min-h-[10rem] max-w-[30rem]
        bg-slate-50 rounded-xl shadow-md text-center px-4 py-4"
-    >
-      <h2 className="font-medium text-2xl">
-        Please sign in to see your favorites.
-      </h2>
-      <Link
-        to={"/authenticate/login"}
-        className="text-xl transition duration-200
+      >
+        <h2 className="font-medium text-2xl">
+          Please sign in to see your favorites.
+        </h2>
+        <Link
+          to={"/authenticate/login"}
+          className="text-xl transition duration-200
 text-white bg-purple-500 hover:bg-pink-500 py-2 rounded-xl px-3
 max-w-[15rem] flex"
-      >
-        <SignInIcon />
-        Sign In
-      </Link>
-    </div>;
+        >
+          <SignInIcon />
+          Sign In
+        </Link>
+      </div>
+    );
   }
 
   return (

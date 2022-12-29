@@ -10,6 +10,7 @@ import {
   removeFavorite,
 } from "../../features/favorites/favoritesSlice";
 import { setUser } from "../../features/user/userSlice";
+import { Link } from "react-router-dom";
 
 const ListingCard = ({ item }) => {
   const price = Number(item.price.original).toLocaleString();
@@ -25,10 +26,6 @@ const ListingCard = ({ item }) => {
   const isListingFavorite = favoriteListings.some(
     (listing) => listing._id === item._id
   );
-
-  const handleOpenListing = () => {
-    navigate(`/listing/${item._id}`);
-  };
 
   const handleUnauthorized = () => {
     dispatch(setUser(null));
@@ -59,12 +56,12 @@ const ListingCard = ({ item }) => {
   };
 
   return (
-    <div
+    <Link
+      to={`/listing/${item._id}`}
       key={item._id}
       className="lg:hover:scale-105 cursor-pointer transition duration-200 
       snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-[22rem] 
       bg-slate-50 lg:hover:bg-white mx-auto my-auto z-0"
-      onClick={handleOpenListing}
     >
       <div className="h-[65%] w-full rounded-t-lg relative z-2 ">
         <img
@@ -94,7 +91,7 @@ const ListingCard = ({ item }) => {
           {item.listing.listingOwnerId}
         </h3>
       </div>
-    </div>
+    </Link>
   );
 };
 

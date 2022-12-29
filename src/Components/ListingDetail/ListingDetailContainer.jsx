@@ -87,7 +87,7 @@ const ListingDetailContainer = ({ scroll }) => {
       }
     }
     fetchData(listingId);
-  }, [listingId]); // Or [] if effect doesn't need props or state
+  }, [listingId, scroll]); // Or [] if effect doesn't need props or state
 
   // const item = DUMMY_CARS.find((el) => el.listing.listingId === listingId);
 

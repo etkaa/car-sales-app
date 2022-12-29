@@ -23,11 +23,11 @@ const ListingDetail = () => {
 
   React.useEffect(() => {
     scrollToPosition();
-  }, []);
-  
+  });
+
   return (
     <div className="flex flex-col justify-between">
-      <ListingDetailContainer scroll={scrollToPosition}/>
+      <ListingDetailContainer scroll={scrollToPosition} />
       <FeaturedSection similar={true} />
     </div>
   );

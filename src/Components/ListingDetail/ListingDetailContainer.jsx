@@ -20,7 +20,7 @@ import {
   addFavorite,
 } from "../../features/favorites/favoritesSlice";
 
-const ListingDetailContainer = () => {
+const ListingDetailContainer = ({ scroll }) => {
   const defaultItem = {
     id: "0",
     status: "available",
@@ -81,6 +81,7 @@ const ListingDetailContainer = () => {
         const item = await getListingDetails(id);
         setItem(item);
         setIsLoading(false);
+        scroll();
       } catch (error) {
         console.log(error);
       }

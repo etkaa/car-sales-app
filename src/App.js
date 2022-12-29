@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Authenticate from "./Components/Authentication/Authenticate";
 import Home from "./Components/Home/Home";
 import Navbar from "./Components/UI/Navbar/Navbar";
@@ -7,8 +7,25 @@ import { Routes, Route } from "react-router-dom";
 import ListingDetail from "./Components/ListingDetail/ListingDetail";
 import Favorites from "./Components/Favorites/Favorites";
 import AddListing from "./Components/ListingForm/AddListing";
+import { checkAuth } from "./utils/checkAuth";
+import { useDispatch } from "react-redux";
+import { setUser } from "./features/user/userSlice";
+import { clearFavorites } from "./features/favorites/favoritesSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  //run use effect only once to check if the user session is still valid
+  useEffect(() => {
+    const fetchAuthStatus = async () => {
+      const response = await checkAuth();
+      if (!response) {
+        dispatch(setUser(null));
+        dispatch(clearFavorites());
+      }
+    };
+    fetchAuthStatus();
+  }, [dispatch]);
+
   return (
     <>
       <Navbar />

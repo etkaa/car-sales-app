@@ -59,7 +59,7 @@ const Favorites = () => {
         });
       }
     } else if (favoritesStatus === "failed") {
-      content = <div>{"We've got some error over here. " + error}</div>;
+      content = <div>{error}</div>;
     }
   } else {
     content = (

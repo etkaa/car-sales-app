@@ -9,6 +9,7 @@ import {
   addFavorite,
   removeFavorite,
 } from "../../features/favorites/favoritesSlice";
+import { setUser } from "../../features/user/userSlice";
 
 const ListingCard = ({ item }) => {
   const price = Number(item.price.original).toLocaleString();
@@ -29,20 +30,27 @@ const ListingCard = ({ item }) => {
     navigate(`/listing/${item._id}`);
   };
 
+  const handleUnauthorized = () => {
+    dispatch(setUser(null));
+    navigate("/authenticate/login");
+  };
+
   const handleFavorite = async (event) => {
     event.stopPropagation();
     if (user !== null) {
       if (isListingFavorite) {
         const resp = await removeFromFavorites(item._id);
-        // console.log({ "response from removeFromFavorites": resp });
         if (resp === "success") {
           dispatch(removeFavorite(item._id));
+        } else if (resp === "unauthorized") {
+          handleUnauthorized();
         }
       } else {
         const resp = await addToFavorites(item._id);
-        // console.log({ "response from addToFavorites": resp });
         if (resp === "success") {
           dispatch(addFavorite(item));
+        } else if (resp === "unauthorized") {
+          handleUnauthorized();
         }
       }
     } else {

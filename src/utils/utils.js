@@ -25,7 +25,11 @@ export const addToFavorites = async (listingId) => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log({ "this is resp status": error.response.status });
+
+      if (error.response.status === 401) {
+        result = "unauthorized";
+      }
     });
   return result;
 };
@@ -55,7 +59,11 @@ export const removeFromFavorites = async (listingId) => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log({ "this is resp status": error.response.status });
+
+      if (error.response.status === 401) {
+        result = "unauthorized";
+      }
     });
   return result;
 };
@@ -84,7 +92,11 @@ export const clearAllFavorites = async () => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log({ "this is resp status": error.response.status });
+
+      if (error.response.status === 401) {
+        result = "unauthorized";
+      }
     });
   return result;
 };
@@ -98,7 +110,6 @@ export const getListingDetails = async (listingId) => {
         listingID: listingId,
       },
       {
-        withCredentials: true,
         headers: {
           "content-type": "application/json",
         },

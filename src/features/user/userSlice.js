@@ -15,7 +15,7 @@ export const userSlice = createSlice({
     },
     clearStore: () => {
       storage.removeItem("persist:carsnow");
-    }
+    },
   },
 });
 

@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../features/user/userSlice";
+import { fetchFavoriteListingDetails } from "../../../features/favorites/favoritesSlice";
 import { clearFavorites } from "../../../features/favorites/favoritesSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,9 +21,10 @@ const Navbar = () => {
     if (user === null) {
       setIsLoggedIn(false);
     } else {
+      dispatch(fetchFavoriteListingDetails());
       setIsLoggedIn(true);
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   const handleSignOut = () => {
     //send api call, if successful, then dispatch setUserID(null)

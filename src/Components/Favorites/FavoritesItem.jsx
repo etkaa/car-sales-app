@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { LikeIcon, ListingOwnerIcon, MessageIcon } from "../UI/Icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { setUser } from "../../features/user/userSlice";
 import { removeFavorite } from "../../features/favorites/favoritesSlice";
 import { removeFromFavorites } from "../../utils/utils";
 
 const FavoritesItem = ({ item }) => {
   const [liked, setLiked] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleRemoveFromFavorites = async (event) => {
     event.stopPropagation();
@@ -19,8 +21,15 @@ const FavoritesItem = ({ item }) => {
       const resp = await removeFromFavorites(listingID);
       if (resp === "success") {
         dispatch(removeFavorite(item._id));
+      } else if (resp === "unauthorized") {
+        handleUnauthorized();
       }
     }, 1500);
+  };
+
+  const handleUnauthorized = () => {
+    dispatch(setUser(null));
+    navigate("/authenticate/login");
   };
 
   //capitalize the first letter of a string
@@ -67,9 +76,9 @@ const FavoritesItem = ({ item }) => {
                 " - " +
                 item.engine.capacity
               ).substring(0, 30)}`}</h1>
-              <h1 className="text-lg">{`${capitalize(item.condition)} - ${Number(
-                item.miles
-              ).toLocaleString()} miles  `}</h1>
+              <h1 className="text-lg">{`${capitalize(
+                item.condition
+              )} - ${Number(item.miles).toLocaleString()} miles  `}</h1>
               <div className="flex flex-col my-auto">
                 <h1 className="text-xl font-bold my-auto">{`$${Number(
                   item.price.original

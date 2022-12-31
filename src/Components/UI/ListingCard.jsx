@@ -10,7 +10,6 @@ import {
   removeFavorite,
 } from "../../features/favorites/favoritesSlice";
 import { setUser } from "../../features/user/userSlice";
-import { Link } from "react-router-dom";
 
 const ListingCard = ({ item }) => {
   const price = Number(item.price.original).toLocaleString();
@@ -56,8 +55,8 @@ const ListingCard = ({ item }) => {
   };
 
   return (
-    <Link
-      to={`/listing/${item._id}`}
+    <div
+      onClick={() => navigate(`/listing/${item._id}`)}
       key={item._id}
       className="lg:hover:scale-105 cursor-pointer transition duration-200 
       snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-[22rem] 
@@ -65,6 +64,8 @@ const ListingCard = ({ item }) => {
     >
       <div className="h-[65%] w-full rounded-t-lg relative z-2 ">
         <img
+          // src={`${process.env.REACT_APP_API_URL}/images/${item.coverImage}`}
+          //this needs to point to the S3 bucket key of the image
           src={item.pictures.cover}
           className="h-full w-full rounded-t-lg object-cover"
           alt={item.make}
@@ -91,7 +92,7 @@ const ListingCard = ({ item }) => {
           {item.listing.listingOwnerId}
         </h3>
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -96,10 +96,10 @@ const Navbar = () => {
                 Favorites
               </Link>
               <Link
-                to="/user/profile"
+                to="/listing/add"
                 className="text-xl hover:text-gray-400 transition duration-100 py-4"
               >
-                Profile
+                Sell My Car
               </Link>
               <button
                 onClick={handleSignOut}
@@ -157,13 +157,13 @@ const Navbar = () => {
               Favorites
             </Link>
             <Link
-              to="/profile"
+              to="/listing/add"
               onClick={() => {
                 setIsMenuOpen(false);
               }}
               className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
-              Profile
+              Sell
             </Link>
             <Link
               to="/messages"

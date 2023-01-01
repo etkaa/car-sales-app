@@ -1,6 +1,30 @@
 import React, { useState, Fragment } from "react";
-// import { UploadIcon } from "../UI/Icons";
-import ImageUploadTest from "./ImageUploadTest";
+import UploadImage from "./UploadImage";
+import LeftScrollArrow from "../Featured/LeftScrollArrow";
+import RightScrollArrow from "../Featured/RightScrollArrow";
+import { LeftPointArrow, RightPointArrow } from "../UI/Icons";
+import { useSelector } from "react-redux";
+
+// const defaultFormData = {
+//   condition: "",
+//   year: "",
+//   make: "",
+//   model: "",
+//   trim: "",
+//   mileage: "",
+//   extColor: "",
+//   intColor: "",
+//   engineCapacity: "",
+//   cylinders: "",
+//   horsepower: "",
+//   torque: "",
+//   transmission: "",
+//   price: "",
+//   city: "",
+//   state: "",
+//   zip: "",
+//   pictureKeys: [],
+// };
 
 const ListingForm = () => {
   const DUMMY_IMAGES = [
@@ -31,43 +55,86 @@ const ListingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //do something so upload photos triggered from image upload component
   };
 
+  // const [formData, setFormData] = useState(defaultFormData);
   const [pageNumber, setPageNumber] = useState(1);
+  const [imageSelected, setImageSelected] = useState(null); //highlight the selected image
+
+  const uploadedImageKeys = useSelector(
+    (state) => state.listingImages.listingImages
+  );
+  //set image selected to the first image in the array when the component runs for the first time if uploaded image keys is not empty
+  if (uploadedImageKeys.length > 0 && !imageSelected) {
+    setImageSelected(uploadedImageKeys[0]);
+  }
+  console.log({ uploadedImageKeys });
 
   return (
     <div className="flex flex-col space-y-5 my-auto min-w-[50rem] w-[50rem] py-2">
       <h1 className="text-2xl text-center">Create a Listing</h1>
       <div name="inner container" className="flex">
         <div className="w-[65%] flex flex-col border-2 border-slate-200 rounded-xl max-h-[28rem]">
-          <div name="image displayer" className="h-[80%]">
-            {/* <img></img> */}
+          <div
+            name="image displayer"
+            className="h-[75%] overflow-hidden flex justify-center place-items-center relative"
+          >
+            <div
+              className={`left-0 absolute ${
+                uploadedImageKeys.length < 1 && "opacity-0"
+              }`}
+            >
+              <LeftScrollArrow />
+            </div>
+            {imageSelected && (
+              <img
+                src={`${process.env.REACT_APP_API_URL}/images/${imageSelected}`}
+                alt={imageSelected}
+                className="h-[90%] w-[90%] object-cover rounded-md my-auto"
+              />
+            )}
+            {/* {uploadedImageKeys.length > 0 ? (
+              uploadedImageKeys.map((key) => {
+                return (
+                  <img
+                    src={`${process.env.REACT_APP_API_URL}/images/${key}`}
+                    alt={key}
+                    className="h-[90%] w-[90%] object-cover rounded-md my-auto"
+                  />
+                );
+              })
+            ) : (
+              <div className="">
+                <h2 className="bg-slate-200 px-4 py-4 rounded-lg max-w-2rem">Upload Photos to Preview</h2>
+              </div>
+            )} */}
+            <div
+              className={`right-0 absolute ${
+                uploadedImageKeys.length < 1 && "opacity-0"
+              }`}
+            >
+              <RightScrollArrow />
+            </div>
           </div>
           <div
             name="images carousel"
-            className="h-[20%] flex scrollbar-hide snap-x snap-mandatory scroll-smooth
+            className="h-[25%] flex snap-x snap-mandatory scroll-smooth
            space-x-2 px-4 overflow-x-scroll w-[100%] my-auto 
-           mx-auto place-items-center"
+           mx-auto place-items-center border-t-2 border-slate-200 rounded-t-lg"
           >
-            {/* <div
-              className="cursor-pointer min-w-[5rem] min-h-[5rem] flex flex-col 
-            items-center justify-center px-2 py-2 border-2
-            rounded-md bg-slate-100 hover:scale-110 transition duration-150"
-            >
-              <UploadIcon />
-              <h1 className="text-blue-500">Upload</h1>
-            </div> */}
-            <ImageUploadTest />
-            {DUMMY_IMAGES.map((image) => (
+            <UploadImage />
+            {uploadedImageKeys.map((key) => (
               <div
-                key={image.id}
+                key={key}
                 className="min-w-[5rem] min-h-[5rem] h-[5rem] w-[5rem]"
               >
                 <img
-                  src={image.url}
-                  alt={image}
-                  className="h-full w-full object-cover rounded-md"
+                  src={`${process.env.REACT_APP_API_URL}/images/${key}`}
+                  alt={key}
+                  // className={`h-full w-full object-cover rounded-md ${
+                  //   imageSelected && "border-2 border-blue-500"
+                  // }`}
+                  className={`h-full w-full object-cover rounded-md`}
                 />
               </div>
             ))}
@@ -86,6 +153,7 @@ const ListingForm = () => {
                   type="text"
                   name="condition"
                   placeholder="New or Used"
+                  required
                 />
                 <input
                   className={style}
@@ -93,30 +161,35 @@ const ListingForm = () => {
                   name="year"
                   min={0}
                   placeholder="Year"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
                   name="make"
                   placeholder="Make"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
                   name="model"
                   placeholder="Model"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
                   name="trim"
                   placeholder="Trim"
+                  required
                 />
                 <input
                   className={style}
                   type="number"
                   name="mileage"
                   placeholder="Mileage"
+                  required
                 />
               </Fragment>
             )}
@@ -127,36 +200,42 @@ const ListingForm = () => {
                   type="text"
                   name="extColor"
                   placeholder="Exterior Color"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
                   name="intColor"
                   placeholder="Interior Color"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
-                  name="text"
+                  name="engineCapacity"
                   placeholder="Engine Capacity"
+                  required
                 />
                 <input
                   className={style}
                   type="number"
                   name="cyclinders"
                   placeholder="Cyclinders"
+                  required
                 />
                 <input
                   className={style}
                   type="number"
                   name="horsepower"
                   placeholder="Horsepower"
+                  required
                 />
                 <input
                   className={style}
                   type="number"
                   name="torque"
                   placeholder="Torque"
+                  required
                 />
               </Fragment>
             )}
@@ -164,33 +243,38 @@ const ListingForm = () => {
               <Fragment>
                 <input
                   className={style}
+                  type="transmission"
+                  name="text"
+                  placeholder="Transmission"
+                  required
+                />
+                <input
+                  className={style}
                   type="number"
                   name="price"
                   placeholder="Price"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
                   name="city"
                   placeholder="City"
+                  required
                 />
                 <input
                   className={style}
                   type="text"
                   name="state"
                   placeholder="State"
+                  required
                 />
                 <input
                   className={style}
                   type="number"
                   name="zip"
                   placeholder="Zip Code"
-                />
-                <input
-                  className={style}
-                  type="text"
-                  name="picture"
-                  placeholder="Picture Link"
+                  required
                 />
               </Fragment>
             )}
@@ -199,25 +283,28 @@ const ListingForm = () => {
             {pageNumber > 1 && (
               <button
                 type="button"
-                className="text-lg mx-auto px-5 py-1 bg-purple-600 text-slate-100 rounded-2xl"
+                className="flex space-x-2 bg-gray-200 px-3 py-1 text-blue-600 mx-auto my-auto rounded-xl"
                 onClick={() => setPageNumber(pageNumber - 1)}
               >
+                <LeftPointArrow />
                 Back
               </button>
             )}
             {pageNumber < 3 && (
               <button
                 type="button"
-                className="text-lg mx-auto px-5 py-1 bg-purple-600 text-slate-100 rounded-2xl"
+                className="flex space-x-2 bg-gray-200 px-3 py-1 text-blue-600 mx-auto my-auto rounded-xl"
                 onClick={() => setPageNumber(pageNumber + 1)}
               >
                 Next
+                <RightPointArrow />
               </button>
             )}
             {pageNumber === 3 && (
               <button
                 type="submit"
-                className="text-lg mx-auto px-5 py-1 bg-blue-500 text-slate-100 rounded-2xl"
+                className="text-md mx-auto px-5 py-1 bg-blue-500 text-slate-100 rounded-2xl 
+                hover:bg-yellow-500 hover:text-slate-600 hover:scale-110 tranition duration-150 "
               >
                 Submit
               </button>

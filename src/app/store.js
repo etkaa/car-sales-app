@@ -14,17 +14,19 @@ import storage from "redux-persist/lib/storage";
 import userReducer from "../features/user/userSlice";
 import favoritesReducer from "../features/favorites/favoritesSlice";
 import featuredReducer from "../features/listings/featuredSlice";
+import listingImagesReducer from "../features/listingImages/listingImagesSlice";
 
 const persistConfig = {
   key: "carsnow",
   storage,
-  blacklist: ["featured", "favorites"],
+  blacklist: ["featured", "favorites", "listingImages"],
 };
 
 const reducers = combineReducers({
   user: userReducer,
   favorites: favoritesReducer,
   featured: featuredReducer,
+  listingImages: listingImagesReducer,
 });
 
 const persistedReducer = persistReducer(

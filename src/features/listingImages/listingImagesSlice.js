@@ -22,8 +22,6 @@ export const listingImagesSlice = createSlice({
   },
 });
 
-console.log(listingImagesSlice);
-
 export const { addListingImage, removeListingImage, clearStore } =
   listingImagesSlice.actions;
 

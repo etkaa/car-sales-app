@@ -17,7 +17,7 @@ export const HamburgerIcon = () => {
   );
 };
 
-export const CloseIcon = () => {
+export const CloseIcon = ({ size }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export const CloseIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-8 h-8"
+      className={`w-8 h-8  ${size && size}`}
     >
       <path
         strokeLinecap="round"

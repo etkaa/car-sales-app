@@ -1,26 +1,9 @@
 import { useState, useRef, Fragment, useEffect, useCallback } from "react";
-import axios from "axios";
 import { UploadIcon } from "../UI/Icons";
 import { useDispatch } from "react-redux";
 import { addListingImage } from "../../features/listingImages/listingImagesSlice";
+import { postImage } from "../../utils/utils";
 
-async function postImage({ images }) {
-  const formData = new FormData();
-  images.forEach((image) => {
-    formData.append("images", image);
-  });
-
-  const result = await axios.post(
-    `${process.env.REACT_APP_API_URL}/images/upload`,
-    formData,
-    {
-      withCredentials: true,
-      headers: { "Content-Type": "multipart/form-data" },
-    }
-  );
-  console.log({ "uploaded s3 object details": result.data.image });
-  return result.data;
-}
 
 function UploadImage() {
   console.log("UploadImage.jsx RENDER");

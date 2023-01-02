@@ -128,3 +128,21 @@ export const getListingDetails = async (listingId) => {
     });
   return result;
 };
+
+export async function postImage({ images }) {
+  const formData = new FormData();
+  images.forEach((image) => {
+    formData.append("images", image);
+  });
+
+  const result = await axios.post(
+    `${process.env.REACT_APP_API_URL}/images/upload`,
+    formData,
+    {
+      withCredentials: true,
+      headers: { "Content-Type": "multipart/form-data" },
+    }
+  );
+  console.log({ "uploaded s3 object details": result.data.image });
+  return result.data;
+}

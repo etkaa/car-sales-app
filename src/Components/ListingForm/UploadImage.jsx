@@ -13,12 +13,13 @@ function UploadImage({ setIsLoading, uploadedImageKeys }) {
   const fileInputField = useRef(null);
   const dispatch = useDispatch();
 
-  const maxNumberOfFiles = 7 - uploadedImageKeys.length;
+  const maxNumberOfFiles = 8 - uploadedImageKeys.length; //1 extra for fileList object
 
   //wrap submit in useCallback to prevent infinite loop
   const submit = useCallback(async () => {
-    if (files.length === 0 || files.length > maxNumberOfFiles) {
-      alert(`You can only upload ${maxNumberOfFiles} more images.`);
+    if (files.length <= 1 || files.length > maxNumberOfFiles) {
+      alert(`You can only upload ${maxNumberOfFiles - 1} more images.`);
+      setFiles([]);
       return;
     }
     setIsLoading(true);

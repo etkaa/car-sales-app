@@ -13,7 +13,7 @@ export const listingImagesSlice = createSlice({
     },
     removeListingImage: (state, action) => {
       state.listingImages = state.listingImages.filter(
-        (imageKey) => imageKey !== action.payload
+        (imageKey) => !action.payload.includes(imageKey)
       );
     },
     clearListingImages: (state, action) => {

@@ -143,6 +143,34 @@ export async function postImage({ images }) {
       headers: { "Content-Type": "multipart/form-data" },
     }
   );
-  console.log({ "uploaded s3 object details": result.data.image });
+  // console.log({ "Uploaded S3 Objects Metadata": result.data.image });
   return result.data;
+}
+
+export async function deleteImages(imageKeysToDelete) {
+  var result;
+  // console.log({ imageKeysToDelete: imageKeysToDelete });
+  await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/images/delete`,
+      {
+        imageKeysToDelete: imageKeysToDelete,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Deleted images! / utils.js");
+        result = 200;
+      } else {
+        console.log("Error deleting images! / utils.js");
+        result = 500;
+      }
+    });
+  return result;
 }

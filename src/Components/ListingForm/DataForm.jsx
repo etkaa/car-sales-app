@@ -54,7 +54,6 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     setEdited(true);
-    console.log(formData);
   };
 
   const formSubmitHandler = (event) => {
@@ -276,7 +275,7 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
           <button
             type="submit"
             className="text-md mx-auto px-5 py-1 bg-blue-500 text-slate-100 rounded-2xl 
-          hover:bg-yellow-500 hover:text-slate-600 hover:scale-110 tranition duration-150 "
+          hover:bg-yellow-500 hover:text-white hover:scale-110 tranition duration-150 "
           >
             Submit
           </button>

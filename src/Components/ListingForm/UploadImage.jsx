@@ -4,9 +4,8 @@ import { useDispatch } from "react-redux";
 import { addListingImage } from "../../features/listingImages/listingImagesSlice";
 import { postImage } from "../../utils/utils";
 
-
-function UploadImage() {
-  console.log("UploadImage.jsx RENDER");
+function UploadImage({ setIsLoading, uploadedImageKeys }) {
+  // console.log("UploadImage.jsx RENDER");
   const [files, setFiles] = useState([]);
   const [images, setImages] = useState([]);
   const [changed, setChanged] = useState(false);
@@ -14,11 +13,19 @@ function UploadImage() {
   const fileInputField = useRef(null);
   const dispatch = useDispatch();
 
+  const maxNumberOfFiles = 7 - uploadedImageKeys.length;
+
   //wrap submit in useCallback to prevent infinite loop
   const submit = useCallback(async () => {
+    if (files.length === 0 || files.length > maxNumberOfFiles) {
+      alert(`You can only upload ${maxNumberOfFiles} more images.`);
+      return;
+    }
+    setIsLoading(true);
     const result = await postImage({ images: files });
     setImages(result.image); //result.image is an array of objects
-  }, [files]);
+    setIsLoading(false);
+  }, [files, setIsLoading, maxNumberOfFiles]);
 
   useEffect(() => {
     if (files.length > 0) {
@@ -31,9 +38,9 @@ function UploadImage() {
 
   //whenever images changes, dispatch the images to the store
   useEffect(() => {
-    console.log("effect fired!");
+    // console.log("effect fired!");
     if (images.length > 0 && changed) {
-      console.log("images dispatch effect fired!");
+      // console.log("images dispatch effect fired!");
       images.forEach((image) => {
         dispatch(addListingImage(image.Key));
       });
@@ -56,6 +63,7 @@ function UploadImage() {
           type="file"
           accept="image/*"
           className="hidden"
+          max={maxNumberOfFiles.toString()}
           multiple
         ></input>
         <label

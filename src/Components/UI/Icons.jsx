@@ -25,7 +25,7 @@ export const CloseIcon = ({ size }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={`w-8 h-8  ${size && size}`}
+      className={`${size ? size : "w-8 h-8"}`}
     >
       <path
         strokeLinecap="round"
@@ -251,6 +251,45 @@ export const UploadIcon = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+      />
+    </svg>
+  );
+};
+
+export const CancelIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-4 h-4 bg-slate-200 rounded-full stroke-slate-800 
+      transition duration-150 hover:scale-110"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  );
+};
+
+export const AddIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-8 h-8 stroke-slate-700 hover:scale-125 hover:stroke-blue-600 transition duration-150"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 4.5v15m7.5-7.5h-15"
       />
     </svg>
   );

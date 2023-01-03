@@ -4,7 +4,7 @@ import DataForm from "./DataForm";
 import UploadCarousel from "./UploadCarousel";
 
 const ListingForm = () => {
-  console.log("ListingForm.jsx RENDER");
+  // console.log("ListingForm.jsx RENDER");
 
   // const handleSubmit = async (event, formData) => {
   //   event.preventDefault();

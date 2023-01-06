@@ -71,7 +71,7 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
 
   return (
     <form
-      className="items-center text-center w-[35%] min-h-[28rem] h-[28rem]"
+      className="mx-auto items-center text-center min-w-[16rem] max-w-[24rem] w-[90%] lg:[35%] min-h-[28rem] h-[28rem]"
       onSubmit={formSubmitHandler}
     >
       <div className="flex flex-col justify-between max-w-[25rem] xl:max-w-[40rem] min-h-[90%] mx-auto py-4">

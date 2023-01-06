@@ -1,15 +1,15 @@
 import React from "react";
-import ListingAddForm from "./ListingAddForm";
+import ListingContainer from "./ListingContainer";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SignInIcon } from "../UI/Icons";
 
-const AddListing = () => {
+const CreateListing = () => {
   const user = useSelector((state) => state.user.user);
   return (
-    <div className="flex flex-col justify-between items-center py-5">
+    <div className="flex flex-col justify-between items-center py-5 my-auto">
       {user ? (
-        <ListingAddForm />
+        <ListingContainer />
       ) : (
         <div
           className="flex flex-col justify-around items-center min-h-[10rem] max-w-[30rem]
@@ -33,4 +33,4 @@ max-w-[15rem] flex"
   );
 };
 
-export default AddListing;
+export default CreateListing;

@@ -6,7 +6,7 @@ import Navbar from "./Components/UI/Navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
 import ListingDetail from "./Components/ListingDetail/ListingDetail";
 import Favorites from "./Components/Favorites/Favorites";
-import AddListing from "./Components/ListingForm/AddListing";
+import CreateListing from "./Components/ListingForm/CreateListing";
 import { checkAuth } from "./utils/checkAuth";
 import { useDispatch } from "react-redux";
 import { setUser } from "./features/user/userSlice";
@@ -41,7 +41,7 @@ function App() {
         />
         <Route path="/listing/:listingID" element={<ListingDetail />} />
         <Route path="/user/favorites" element={<Favorites />} />
-        <Route path="/listing/add" element={<AddListing />} />
+        <Route path="/listing/add" element={<CreateListing />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </>

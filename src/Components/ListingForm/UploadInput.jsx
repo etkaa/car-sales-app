@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addListingImage } from "../../features/listingImages/listingImagesSlice";
 import { postImage, addUnsubmittedKeys } from "../../utils/utils";
 
-function UploadImage({ setIsLoading, uploadedImageKeys }) {
+function UploadInput({ setIsLoading, uploadedImageKeys }) {
   // console.log("UploadImage.jsx RENDER");
   const [files, setFiles] = useState([]);
   const [images, setImages] = useState([]);
@@ -76,9 +76,9 @@ function UploadImage({ setIsLoading, uploadedImageKeys }) {
         ></input>
         <label
           onClick={() => fileInputField.current.click()}
-          className="w-[5rem] h-[5rem] flex flex-col cursor-pointer
-            items-center justify-center px-2 py-2 border-2
-            rounded-md bg-slate-100 hover:scale-105 hover:bg-slate-50 transition duration-150"
+          className="w-[6rem] h-[6rem] flex flex-col cursor-pointer
+            items-center justify-center px-2 py-2 border-2 hover:text-blue-600
+            rounded-md bg-slate-100 hover:bg-slate-50 transition duration-200"
         >
           <Fragment>
             <UploadIcon />
@@ -90,4 +90,4 @@ function UploadImage({ setIsLoading, uploadedImageKeys }) {
   );
 }
 
-export default UploadImage;
+export default UploadInput;

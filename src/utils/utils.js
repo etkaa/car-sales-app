@@ -129,7 +129,7 @@ export const getListingDetails = async (listingId) => {
   return result;
 };
 
-export async function postImage({ images }) {
+export const postImage = async ({ images }) => {
   const formData = new FormData();
   images.forEach((image) => {
     formData.append("images", image);
@@ -145,9 +145,9 @@ export async function postImage({ images }) {
   );
   // console.log({ "Uploaded S3 Objects Metadata": result.data.image });
   return result.data;
-}
+};
 
-export async function deleteImages(imageKeysToDelete) {
+export const deleteImages = async (imageKeysToDelete) => {
   var result;
   // console.log({ imageKeysToDelete: imageKeysToDelete });
   await axios
@@ -165,12 +165,64 @@ export async function deleteImages(imageKeysToDelete) {
     )
     .then((response) => {
       if (response.status === 200) {
-        console.log("Deleted images! / utils.js");
+        console.log("Deleted images from S3! / utils.js");
         result = 200;
       } else {
-        console.log("Error deleting images! / utils.js");
+        console.log("Error deleting images from S3! / utils.js");
         result = 500;
       }
     });
   return result;
-}
+};
+
+export const addUnsubmittedKeys = async (imageKeys) => {
+  await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/images/addImageKeys`,
+      {
+        imageKeys: imageKeys,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Added unsubmitted keys! / utils.js");
+      } else {
+        console.log("Error saving unsubmitted keys! / utils.js");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const deleteUnsubmittedKeys = async (imageKeys) => {
+  await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/images/removeImageKeys`,
+      {
+        imageKeys: imageKeys,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Deleted unsubmitted keys! / utils.js");
+      } else {
+        console.log("Error saving unsubmitted keys! / utils.js");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

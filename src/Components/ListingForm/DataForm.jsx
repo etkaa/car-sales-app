@@ -56,6 +56,11 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
     setEdited(true);
   };
 
+  const handleClearForm = () => {
+    setFormData(defaultFormData);
+    setEdited(false);
+  };
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
     ///@@@FORM SUBMITS EVEN THOUGH THERE ARE EMPTY FIELDS, IMPLEMENT A CHECK
@@ -85,7 +90,7 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
               className={style}
               type="number"
               name="year"
-              min={0}
+              min="0"
               placeholder="Year"
               value={year}
               onChange={handleChange}
@@ -252,10 +257,7 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
           <button
             type="button"
             className="flex space-x-2 bg-red-500 px-3 py-1 text-slate-50 mx-auto my-auto rounded-xl"
-            onClick={() => {
-              setFormData(defaultFormData);
-              setEdited(false);
-            }}
+            onClick={handleClearForm}
           >
             <CloseIcon size={`w-6 h-6`} />
             Clear

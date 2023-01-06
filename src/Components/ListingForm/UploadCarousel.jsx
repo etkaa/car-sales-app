@@ -4,7 +4,7 @@ import RightScrollArrow from "../Featured/RightScrollArrow";
 import UploadImage from "./UploadImage";
 import ImageDisplayer from "./ImageDisplayer";
 import { CancelIcon } from "../UI/Icons";
-import { deleteImages } from "../../utils/utils";
+import { deleteImages, deleteUnsubmittedKeys } from "../../utils/utils";
 import { useDispatch } from "react-redux";
 import { removeListingImage } from "../../features/listingImages/listingImagesSlice";
 
@@ -28,6 +28,7 @@ const UploadCarousel = ({ uploadedImageKeys }) => {
     setIsLoading(boolean);
   };
 
+  //make it an array for possible future use
   const handleDelete = async (imageKeysToDelete) => {
     var imageKeysArray = [];
     imageKeysArray.push(imageKeysToDelete);
@@ -38,6 +39,10 @@ const UploadCarousel = ({ uploadedImageKeys }) => {
     if (result === 200) {
       //update redux state
       dispatch(removeListingImage(imageKeysArray));
+      const result = await deleteUnsubmittedKeys(imageKeysArray);
+      if (result) {
+        console.log("Deleted unsubmitted keys successfully!");
+      }
     } else {
       console.log("Error deleting image! / UploadCarousel.js");
     }
@@ -82,7 +87,10 @@ const UploadCarousel = ({ uploadedImageKeys }) => {
    mx-auto place-items-center border-t-2 border-slate-200 rounded-t-lg"
         >
           {uploadedImageKeys.length < 7 && (
-            <UploadImage setIsLoading={handleLoading} uploadedImageKeys={uploadedImageKeys} />
+            <UploadImage
+              setIsLoading={handleLoading}
+              uploadedImageKeys={uploadedImageKeys}
+            />
           )}
           {uploadedImageKeys.map((key) => (
             <div
@@ -90,7 +98,7 @@ const UploadCarousel = ({ uploadedImageKeys }) => {
               className="min-w-[5rem] min-h-[5rem] h-[5rem] w-[5rem] z-0 relative"
             >
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${key}`}
+                src={`${process.env.REACT_APP_API_URL}/images/getImage/${key}`}
                 alt={key}
                 onClick={handleImageSelect}
                 className={`h-full w-full object-cover rounded-md z-1

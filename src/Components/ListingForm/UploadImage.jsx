@@ -2,7 +2,7 @@ import { useState, useRef, Fragment, useEffect, useCallback } from "react";
 import { UploadIcon } from "../UI/Icons";
 import { useDispatch } from "react-redux";
 import { addListingImage } from "../../features/listingImages/listingImagesSlice";
-import { postImage } from "../../utils/utils";
+import { postImage, addUnsubmittedKeys } from "../../utils/utils";
 
 function UploadImage({ setIsLoading, uploadedImageKeys }) {
   // console.log("UploadImage.jsx RENDER");
@@ -39,14 +39,21 @@ function UploadImage({ setIsLoading, uploadedImageKeys }) {
 
   //whenever images changes, dispatch the images to the store
   useEffect(() => {
-    // console.log("effect fired!");
-    if (images.length > 0 && changed) {
-      // console.log("images dispatch effect fired!");
+    const saveImages = async () => {
+      let imageKeys = [];
       images.forEach((image) => {
         dispatch(addListingImage(image.Key));
+        imageKeys.push(image.Key);
       });
-      setImages([]);
-      setChanged(false);
+      const result = await addUnsubmittedKeys(imageKeys);
+      if (result) {
+        imageKeys = null;
+        setImages([]);
+        setChanged(false);
+      }
+    };
+    if (images.length > 0 && changed) {
+      saveImages();
     }
   }, [images, dispatch, files, changed]);
 

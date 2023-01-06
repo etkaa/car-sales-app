@@ -24,7 +24,7 @@ const ImageDisplayer = ({ uploadedImageKeys, imageSelected, isLoading }) => {
       <div className="w-full h-full object-cover mx-auto">
         {imageSelected ? (
           <img
-            src={`${process.env.REACT_APP_API_URL}/images/${imageSelected}`}
+            src={`${process.env.REACT_APP_API_URL}/images/getImage/${imageSelected}`}
             alt={imageSelected}
             className="h-full w-full object-cover rounded-t-md my-auto"
           />

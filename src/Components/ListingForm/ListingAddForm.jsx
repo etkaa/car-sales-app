@@ -1,5 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUnsubmittedImageKeys } from "../../features/listingImages/listingImagesSlice";
 import DataForm from "./DataForm";
 import UploadCarousel from "./UploadCarousel";
 
@@ -10,9 +11,52 @@ const ListingForm = () => {
   //   event.preventDefault();
   // };
 
+  const user = useSelector((state) => state.user.user);
+
+  const dispatch = useDispatch();
+
+  const listingImagesStatus = useSelector(
+    (state) => state.listingImages.status
+  );
+
+  useEffect(() => {
+    if (user) {
+      if (listingImagesStatus === "idle") {
+        //if status is idle, dispatch the async thunk
+        dispatch(fetchUnsubmittedImageKeys());
+      }
+    } else {
+      return;
+    }
+  });
+
   const uploadedImageKeys = useSelector(
     (state) => state.listingImages.listingImages
   );
+
+  // const handleFormChange = (boolean) => {
+  //   if (boolean === isFormChanged) return;
+  //   setIsFormChanged(boolean);
+  //   console.log({ isFormChanged: boolean });
+  // };
+
+  //This code causes to delete all images when one of the images is deleted
+  //That's because the component rerenders onDelete and the useEffect is called
+  // useEffect(() => {
+  //   return async () => {
+  //     console.log("component will unmount");
+  //     if (isFormChanged && uploadedImageKeys.length > 0) {
+  //       console.log("Form changed and images uploaded");
+  //       const response = await deleteImages(uploadedImageKeys);
+  //       if (response === 200) {
+  //         console.log("images deleted from S3");
+  //         dispatch(clearListingImages());
+  //       } else {
+  //         console.log("there was en error deleting images from S3");
+  //       }
+  //     }
+  //   };
+  // }, [dispatch, isFormChanged, uploadedImageKeys]);
 
   // console.log({ uploadedImageKeys });
 

@@ -12,7 +12,7 @@ import {
 import { setUser } from "../../features/user/userSlice";
 
 const ListingCard = ({ item }) => {
-  const price = Number(item.price.original).toLocaleString();
+  const price = Number(item.price).toLocaleString();
   const mileage = Number(item.miles).toLocaleString();
 
   const navigate = useNavigate();
@@ -54,6 +54,21 @@ const ListingCard = ({ item }) => {
     }
   };
 
+  var imageSource;
+  const isStock = item.isStock;
+  if (isStock === "true") {
+    imageSource = item.pictures[0];
+  } else {
+    imageSource = `${process.env.REACT_APP_API_URL}/images/getImage/${item.pictures[0]}`;
+  }
+
+  var listingOwner;
+  if (isStock === "true") {
+    listingOwner = item.listing.listingOwnerId;
+  } else {
+    listingOwner = item.listing.listingOwnerNickname;
+  }
+
   return (
     <div
       onClick={() => navigate(`/listing/${item._id}`)}
@@ -66,7 +81,7 @@ const ListingCard = ({ item }) => {
         <img
           // src={`${process.env.REACT_APP_API_URL}/images/${item.coverImage}`}
           //this needs to point to the S3 bucket key of the image
-          src={item.pictures.cover}
+          src={imageSource}
           className="h-full w-full rounded-t-lg object-cover"
           alt={item.make}
         />
@@ -88,9 +103,7 @@ const ListingCard = ({ item }) => {
       </div>
       <div className="flex justify-between text-slate-600">
         <h3 className="h-[8%] font-md text-sm px-4 py-1">{`${item.location.city}, ${item.location.state}`}</h3>
-        <h3 className="h-[8%] font-md text-sm px-4 py-1">
-          {item.listing.listingOwnerId}
-        </h3>
+        <h3 className="h-[8%] font-md text-sm px-4 py-1">{listingOwner}</h3>
       </div>
     </div>
   );

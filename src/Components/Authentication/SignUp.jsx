@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
@@ -22,6 +22,9 @@ const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState(defaultError);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -55,6 +58,7 @@ const SignUp = () => {
       .then((response) => {
         dispatch(setUser(response.data.user));
         dispatch(fetchFavoriteListingDetails());
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         if (

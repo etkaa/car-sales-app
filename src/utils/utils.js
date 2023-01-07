@@ -226,3 +226,33 @@ export const deleteUnsubmittedKeys = async (imageKeys) => {
       console.log(error);
     });
 };
+
+export const postListing = async (formData, imageKeys) => {
+  let value;
+  await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/listing/create`,
+      {
+        formData: formData,
+        imageKeys: imageKeys,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Posted listing! / utils.js");
+        value = response.data.listingID;
+      } else {
+        console.log("Error posting listing! / utils.js");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return value;
+};

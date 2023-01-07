@@ -7,6 +7,8 @@ import { fetchFavoriteListingDetails } from "../../features/favorites/favoritesS
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+// import { DUMMY_CARS } from "../AdvancedSearch/data";
+
 const defaultSignInValues = {
   username: "",
   password: "",
@@ -60,6 +62,29 @@ const SignIn = () => {
         console.log(error.response);
       });
   };
+
+  ///////////DELETE LATER////////////////////////
+
+  // const handleListingPost = async () => {
+  //   await axios
+  //     .post(
+  //       `${process.env.REACT_APP_API_URL}/listing/insertListing`,
+  //       {
+  //         listings: DUMMY_CARS,
+  //       },
+  //       {
+  //         withCredentials: true,
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log(response);
+  //     });
+  // };
+
+  ///////////DELETE LATER////////////////////////
 
   return (
     <main className="flex flex-col items-center w-full bg-slate-50 min-h-full py-8">
@@ -124,6 +149,12 @@ const SignIn = () => {
           >
             Sign up here.
           </Link>
+          {/* <button
+            onClick={handleListingPost}
+            className="font-semibold text-blue-600 text-lg hover:text-blue-400 cursor-pointer transition duration-100"
+          >
+            SEND LISTINGS NOW!
+          </button> */}
         </div>
       </form>
     </main>

@@ -1,5 +1,9 @@
 import React, { useState, Fragment } from "react";
 import { CloseIcon, LeftPointArrow, RightPointArrow } from "../UI/Icons";
+import { postListing } from "../../utils/utils";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { clearListingImages } from "../../features/listingImages/listingImagesSlice";
 
 const defaultFormData = {
   description: "",
@@ -23,13 +27,16 @@ const defaultFormData = {
   pictureKeys: [],
 };
 
-const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
+const DataForm = ({ uploadedImageKeys }) => {
   const style =
     "focus:bg-slate-100 shadow-sm px-2 py-2 outline-none w-[90%] mx-auto my-auto rounded-xl text-center bg-slate-200 placeholder:text-slate-400";
 
   const [formData, setFormData] = useState(defaultFormData);
   const [pageNumber, setPageNumber] = useState(0);
   const [edited, setEdited] = useState(false);
+  const [emptyInputError, setEmptyInputError] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     description,
@@ -56,24 +63,47 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     setEdited(true);
+    setEmptyInputError(null);
   };
 
   const handleClearForm = () => {
     setFormData(defaultFormData);
     setEdited(false);
+    setEmptyInputError(null);
   };
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = async (event) => {
     event.preventDefault();
+
+    let emptyFields = [];
+    for (const [key, value] of Object.entries(formData)) {
+      if (value === "") {
+        emptyFields.push(key);
+      }
+    }
+    if (emptyFields.length > 0) {
+      setEmptyInputError(`Please fill out all the fields before submitting.`);
+      return;
+    } else if (uploadedImageKeys.length === 0) {
+      setEmptyInputError(`Please upload at least one image before submitting.`);
+      return;
+    }
+
+    const result = await postListing(formData, uploadedImageKeys);
+    if (result) {
+      dispatch(clearListingImages());
+      navigate(`/listing/${result}`);
+    } else {
+      setEmptyInputError(`Something went wrong, please try again later.`);
+    }
     ///@@@FORM SUBMITS EVEN THOUGH THERE ARE EMPTY FIELDS, IMPLEMENT A CHECK
     ///@@@FIND A WAY TO PASS THE UPLOADED IMAGE KEYS TO THE SUBMIT HANDLER
     // setFormData(...formData, { pictureKeys: uploadedImageKeys });
-    handleSubmit(formData);
   };
 
   return (
     <form
-      className="py-4 flex flex-col justify-around space-y-2 mx-auto items-center text-center min-w-[16rem] max-w-[24rem] w-[100%] lg:[35%] min-h-[30rem] max-h-[36rem]"
+      className="py-4 flex flex-col justify-around space-y-3 mx-auto items-center text-center min-w-[16rem] max-w-[24rem] w-[100%] lg:[35%] min-h-[30rem] max-h-[38rem]"
       onSubmit={formSubmitHandler}
     >
       <h1 className="text-2xl font-light bg-slate-100 px-3 py-2 rounded-xl">
@@ -261,6 +291,13 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
           </Fragment>
         )}
       </div>
+      {emptyInputError && (
+        <div className="w-[60%] flex text-center bg-red-500 py-1 px-1 rounded-xl my-auto">
+          <p className="text-slate-50 text-sm w-[80%] mx-auto my-auto">
+            {emptyInputError}
+          </p>
+        </div>
+      )}
       <div className="flex items-center w-full">
         {pageNumber > 0 && (
           <button
@@ -275,10 +312,10 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
         {edited && (
           <button
             type="button"
-            className="shadow-sm flex space-x-2 bg-red-500 px-3 py-1 text-slate-50 mx-auto my-auto rounded-xl active:opacity-50"
+            className="shadow-sm flex items-center bg-purple-500 px-3 py-2 text-slate-50 mx-auto my-auto rounded-xl active:opacity-50"
             onClick={handleClearForm}
           >
-            <CloseIcon size={`w-6 h-6`} />
+            <CloseIcon size={`w-5 h-5`} />
             Clear
           </button>
         )}
@@ -295,7 +332,7 @@ const DataForm = ({ handleSubmit, uploadedImageKeys }) => {
         {pageNumber === 3 && (
           <button
             type="submit"
-            className="shadow-sm text-md mx-auto px-5 py-2 bg-blue-500 text-slate-100 rounded-2xl 
+            className="shadow-sm text-md font-semibold mx-auto px-5 py-2 bg-blue-500 text-slate-100 rounded-2xl 
           hover:bg-yellow-500 hover:text-white hover:scale-110 tranition duration-150 "
           >
             Submit

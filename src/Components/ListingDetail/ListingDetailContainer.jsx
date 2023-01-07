@@ -19,14 +19,18 @@ import {
   removeFavorite,
   addFavorite,
 } from "../../features/favorites/favoritesSlice";
+import { defaultDescription } from "../AdvancedSearch/data";
 
 const ListingDetailContainer = ({ scroll }) => {
   const defaultItem = {
+    isStock: "default",
     id: "0",
     status: "available",
     listing: {
+      description: defaultDescription,
       listingId: "0000",
       listingOwnerId: "0000",
+      listingOwnerNickname: "Default",
       createdAt: new Date("October 3, 2022, 14:45"),
     },
     condition: "used",
@@ -41,11 +45,9 @@ const ListingDetailContainer = ({ scroll }) => {
       horsepower: "000",
       torque: "000",
     },
+    transmission: "Default",
     miles: "0000",
-    price: {
-      original: "00000",
-      discounted: "0000",
-    },
+    price: "0000",
     extColor: "Default",
     intColor: "Default",
     location: {
@@ -53,16 +55,13 @@ const ListingDetailContainer = ({ scroll }) => {
       state: "DF",
       zip: "00000",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/32",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/123462",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/13446",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/17663",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/123462",
+      "https://source.unsplash.com/random/?car/1436",
+      "https://source.unsplash.com/random/?car/13446",
+      "https://source.unsplash.com/random/?car/1546",
+      "https://source.unsplash.com/random/?car/17663",
+    ],
   };
 
   const params = useParams();
@@ -92,7 +91,7 @@ const ListingDetailContainer = ({ scroll }) => {
   // const item = DUMMY_CARS.find((el) => el.listing.listingId === listingId);
 
   const name = `${item.year} ${item.make} ${item.model} ${item.trim}`;
-  const price = Number(item.price.original).toLocaleString();
+  const price = Number(item.price).toLocaleString();
 
   const [index, setIndex] = useState(0);
   const [hideLeft, setHideLeft] = useState(true);
@@ -114,10 +113,10 @@ const ListingDetailContainer = ({ scroll }) => {
   };
 
   const handleRightClick = () => {
-    if (index < item.pictures.otherPictures.length - 1) {
+    if (index < item.pictures.length - 1) {
       setIndex(index + 1);
     }
-    if (index === item.pictures.otherPictures.length - 2) {
+    if (index === item.pictures.length - 2) {
       setHideRight(true);
     }
     setHideLeft(false);
@@ -165,6 +164,14 @@ const ListingDetailContainer = ({ scroll }) => {
     navigate("/authenticate/login");
   };
 
+  var imageSource;
+  const isStock = item.isStock;
+  if (isStock === "true") {
+    imageSource = item.pictures[index];
+  } else {
+    imageSource = `${process.env.REACT_APP_API_URL}/images/getImage/${item.pictures[index]}`;
+  }
+
   return (
     <main className="my-auto">
       <div
@@ -191,7 +198,7 @@ const ListingDetailContainer = ({ scroll }) => {
               </button>
               <div className="lg:h-[90%] h-[100%] w-[100%] flex">
                 <img
-                  src={item.pictures.otherPictures[index]}
+                  src={imageSource}
                   className="my-auto mx-auto max-h-[100%] h-[100%] w-[100%] object-cover"
                   alt={item.make}
                 />
@@ -306,12 +313,16 @@ const ListingDetailContainer = ({ scroll }) => {
                       <h2 className="font-medium px-2 w-[50%]">Listing Date</h2>
                       <h3 className="px-2 w-[50%]">{date}</h3>
                     </li>
-                    {/* <li className="flex w-full py-2">
-                    <h2 className="font-medium px-2 w-[50%]">Listing Owner</h2>
-                    <h3 className="px-2 w-[50%]">
-                      {item.listing.listingOwnerId}
-                    </h3>
-                  </li> */}
+                    <li className="flex w-full py-2">
+                      <h2 className="font-medium px-2 w-[50%]">
+                        Listing Owner
+                      </h2>
+                      <h3 className="px-2 w-[50%]">
+                        {item.listing.listingOwnerNickname
+                          ? item.listing.listingOwnerNickname
+                          : item.listing.listingOwnerId}
+                      </h3>
+                    </li>
                   </ul>
                 </div>
               ) : (
@@ -323,28 +334,11 @@ const ListingDetailContainer = ({ scroll }) => {
                     <LeftPointArrow />
                     <p>Back</p>
                   </button>
-                  <div className="overflow-scroll overflow-x-hidden border-2 border-slate-200 px-2 py-1">
+                  <div className="h-[90%]  overflow-scroll overflow-x-hidden border-2 border-slate-200 px-2 py-1">
                     <p>
-                      Lorem ipsum, or lipsum as it is sometimes known, is dummy
-                      text used in laying out print, graphic or web designs. The
-                      passage is attributed to an unknown typesetter in the 15th
-                      century who is thought to have scrambled parts of Cicero's
-                      De Finibus Bonorum et Malorum for use in a type specimen
-                      book. It usually begins with: “Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua.” The purpose
-                      of lorem ipsum is to create a natural looking block of
-                      text (sentence, paragraph, page, etc.) that doesn't
-                      distract from the layout. A practice not without
-                      controversy, laying out pages with meaningless filler text
-                      can be very useful when the focus is meant to be on
-                      design, not content. The passage experienced a surge in
-                      popularity during the 1960s when Letraset used it on their
-                      dry-transfer sheets, and again during the 90s as desktop
-                      publishers bundled the text with their software. Today
-                      it's seen all around the web; on templates, websites, and
-                      stock designs. Use our generator to get your own, or read
-                      on for the authoritative history of lorem ipsum.
+                      {item.listing.description
+                        ? item.listing.description
+                        : defaultDescription}
                     </p>
                   </div>
                 </div>

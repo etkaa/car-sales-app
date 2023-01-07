@@ -37,6 +37,14 @@ const FavoritesItem = ({ item }) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
+  var imageSource;
+  const isStock = item.isStock;
+  if (isStock === "true") {
+    imageSource = item.pictures[0];
+  } else {
+    imageSource = `${process.env.REACT_APP_API_URL}/images/getImage/${item.pictures[0]}`;
+  }
+
   return (
     <div
       className="flex min-h-[12rem] max-h-[12rem] min-w-[22rem] max-w-[30rem] bg-slate-50 
@@ -47,7 +55,7 @@ const FavoritesItem = ({ item }) => {
         className="left-0 max-w-[35%] max-h-[12rem]"
       >
         <img
-          src={item.pictures.cover}
+          src={imageSource}
           alt={item.make}
           className="h-full w-full object-cover rounded-l-xl "
         />
@@ -81,7 +89,7 @@ const FavoritesItem = ({ item }) => {
               )} - ${Number(item.miles).toLocaleString()} miles  `}</h1>
               <div className="flex flex-col my-auto">
                 <h1 className="text-xl font-bold my-auto">{`$${Number(
-                  item.price.original
+                  item.price
                 ).toLocaleString()}`}</h1>
                 {/* <h1 className="text-md font-normal">{`Listed at ${item.listing.createdAt.toLocaleString(
                 "en",

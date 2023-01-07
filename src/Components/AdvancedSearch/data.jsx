@@ -736,6 +736,7 @@ export const allMakesModels = [
 export const DUMMY_CARS = [
   {
     id: "0",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "000018963",
@@ -754,11 +755,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "175",
     },
+    transmission: "automatic",
     miles: "12508",
-    price: {
-      original: "32456",
-      discounted: "35990",
-    },
+    price: "32456",
     extColor: "white",
     intColor: "black",
     location: {
@@ -766,19 +765,17 @@ export const DUMMY_CARS = [
       state: "MA",
       zip: "02108",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/32",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/123462",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/13446",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/17663",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1235462",
+      "https://source.unsplash.com/random/?car/14536",
+      "https://source.unsplash.com/random/?car/1354464",
+      "https://source.unsplash.com/random/?car/515465",
+      "https://source.unsplash.com/random/?car/175663",
+    ],
   },
   {
     id: "1",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00012668",
@@ -797,11 +794,9 @@ export const DUMMY_CARS = [
       horsepower: "987",
       torque: "1056",
     },
+    transmission: "automatic",
     miles: "7965",
-    price: {
-      original: "148900",
-      discounted: "145600",
-    },
+    price: "148900",
     extColor: "white",
     intColor: "black",
     location: {
@@ -809,19 +804,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "15489",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/14",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/12362",
-        "https://source.unsplash.com/random/?car/135436",
-        "https://source.unsplash.com/random/?car/144326",
-        "https://source.unsplash.com/random/?car/15246",
-        "https://source.unsplash.com/random/?car/17643",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346227",
+      "https://source.unsplash.com/random/?car/14368",
+      "https://source.unsplash.com/random/?car/134465",
+      "https://source.unsplash.com/random/?car/15466",
+      "https://source.unsplash.com/random/?car/176631",
+    ],
   },
   {
     id: "2",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00023114",
@@ -839,11 +832,9 @@ export const DUMMY_CARS = [
       horsepower: "245",
       torque: "260",
     },
+    transmission: "automatic",
     miles: "8000",
-    price: {
-      original: "56500",
-      discounted: "52899",
-    },
+    price: "56500",
     extColor: "white",
     intColor: "black",
     location: {
@@ -851,19 +842,17 @@ export const DUMMY_CARS = [
       state: "PA",
       zip: "56987",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/23",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/16322",
-        "https://source.unsplash.com/random/?car/1346",
-        "https://source.unsplash.com/random/?car/14236",
-        "https://source.unsplash.com/random/?car/1556",
-        "https://source.unsplash.com/random/?car/1476",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346219",
+      "https://source.unsplash.com/random/?car/143619",
+      "https://source.unsplash.com/random/?car/1344619",
+      "https://source.unsplash.com/random/?car/154619",
+      "https://source.unsplash.com/random/?car/1766319",
+    ],
   },
   {
     id: "3",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00034078",
@@ -881,11 +870,9 @@ export const DUMMY_CARS = [
       horsepower: "298",
       torque: "315",
     },
+    transmission: "automatic",
     miles: "6458",
-    price: {
-      original: "75485",
-      discounted: "75485",
-    },
+    price: "75485",
     extColor: "white",
     intColor: "black",
     location: {
@@ -893,19 +880,17 @@ export const DUMMY_CARS = [
       state: "VA",
       zip: "36521",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/16",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1662",
-        "https://source.unsplash.com/random/?car/1736",
-        "https://source.unsplash.com/random/?car/1466",
-        "https://source.unsplash.com/random/?car/1566",
-        "https://source.unsplash.com/random/?car/1746",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346267",
+      "https://source.unsplash.com/random/?car/143667",
+      "https://source.unsplash.com/random/?car/1344667",
+      "https://source.unsplash.com/random/?car/154667",
+      "https://source.unsplash.com/random/?car/1766367",
+    ],
   },
   {
     id: "4",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00045045",
@@ -923,11 +908,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "195",
     },
+    transmission: "automatic",
     miles: "0",
-    price: {
-      original: "39879",
-      discounted: "36990",
-    },
+    price: "39879",
     extColor: "white",
     intColor: "black",
     location: {
@@ -935,19 +918,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "11738",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/1",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1623",
-        "https://source.unsplash.com/random/?car/1336",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/1764",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346225",
+      "https://source.unsplash.com/random/?car/143625",
+      "https://source.unsplash.com/random/?car/1344625",
+      "https://source.unsplash.com/random/?car/154625",
+      "https://source.unsplash.com/random/?car/1766325",
+    ],
   },
   {
     id: "5",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00056773",
@@ -965,11 +946,9 @@ export const DUMMY_CARS = [
       horsepower: "192",
       torque: "198",
     },
+    transmission: "automatic",
     miles: "4256",
-    price: {
-      original: "42565",
-      discounted: "39900",
-    },
+    price: "42565",
     extColor: "white",
     intColor: "black",
     location: {
@@ -977,19 +956,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "56256",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/2",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1562",
-        "https://source.unsplash.com/random/?car/1356",
-        "https://source.unsplash.com/random/?car/1456",
-        "https://source.unsplash.com/random/?car/15556",
-        "https://source.unsplash.com/random/?car/1756",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346287",
+      "https://source.unsplash.com/random/?car/143687",
+      "https://source.unsplash.com/random/?car/1344678",
+      "https://source.unsplash.com/random/?car/154678",
+      "https://source.unsplash.com/random/?car/1766387",
+    ],
   },
   {
     id: "6",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00007078",
@@ -1008,11 +985,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "175",
     },
+    transmission: "automatic",
     miles: "12508",
-    price: {
-      original: "32456",
-      discounted: "35990",
-    },
+    price: "32456",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1020,19 +995,17 @@ export const DUMMY_CARS = [
       state: "MA",
       zip: "02108",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/3",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1632",
-        "https://source.unsplash.com/random/?car/1326",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/1536",
-        "https://source.unsplash.com/random/?car/17e6",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346245",
+      "https://source.unsplash.com/random/?car/143645",
+      "https://source.unsplash.com/random/?car/1344456",
+      "https://source.unsplash.com/random/?car/154645",
+      "https://source.unsplash.com/random/?car/1766345",
+    ],
   },
   {
     id: "7",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00018692",
@@ -1051,11 +1024,9 @@ export const DUMMY_CARS = [
       horsepower: "987",
       torque: "1056",
     },
+    transmission: "automatic",
     miles: "7965",
-    price: {
-      original: "148900",
-      discounted: "145600",
-    },
+    price: "148900",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1063,19 +1034,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "15489",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/4",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1262",
-        "https://source.unsplash.com/random/?car/1316",
-        "https://source.unsplash.com/random/?car/1426",
-        "https://source.unsplash.com/random/?car/1526",
-        "https://source.unsplash.com/random/?car/1726",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346246",
+      "https://source.unsplash.com/random/?car/1436436",
+      "https://source.unsplash.com/random/?car/13446463",
+      "https://source.unsplash.com/random/?car/1546463",
+      "https://source.unsplash.com/random/?car/17663463",
+    ],
   },
   {
     id: "8",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0002904",
@@ -1093,11 +1062,9 @@ export const DUMMY_CARS = [
       horsepower: "245",
       torque: "260",
     },
+    transmission: "automatic",
     miles: "8000",
-    price: {
-      original: "56500",
-      discounted: "52899",
-    },
+    price: "56500",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1105,19 +1072,17 @@ export const DUMMY_CARS = [
       state: "PA",
       zip: "56987",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/5",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1692",
-        "https://source.unsplash.com/random/?car/1306",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/1556",
-        "https://source.unsplash.com/random/?car/17976",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346243",
+      "https://source.unsplash.com/random/?car/143643",
+      "https://source.unsplash.com/random/?car/1344643",
+      "https://source.unsplash.com/random/?car/154643",
+      "https://source.unsplash.com/random/?car/1766343",
+    ],
   },
   {
     id: "9",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00031787",
@@ -1135,11 +1100,9 @@ export const DUMMY_CARS = [
       horsepower: "298",
       torque: "315",
     },
+    transmission: "automatic",
     miles: "6458",
-    price: {
-      original: "75485",
-      discounted: "75485",
-    },
+    price: "75485",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1147,19 +1110,17 @@ export const DUMMY_CARS = [
       state: "VA",
       zip: "36521",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/6",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1622",
-        "https://source.unsplash.com/random/?car/1236",
-        "https://source.unsplash.com/random/?car/1346",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/1756",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346224",
+      "https://source.unsplash.com/random/?car/143624",
+      "https://source.unsplash.com/random/?car/1344624",
+      "https://source.unsplash.com/random/?car/154624",
+      "https://source.unsplash.com/random/?car/1766324",
+    ],
   },
   {
     id: "10",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00042632",
@@ -1177,11 +1138,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "195",
     },
+    transmission: "automatic",
     miles: "0",
-    price: {
-      original: "39879",
-      discounted: "36990",
-    },
+    price: "39879",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1189,19 +1148,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "11738",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/7",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1672",
-        "https://source.unsplash.com/random/?car/1376",
-        "https://source.unsplash.com/random/?car/1476",
-        "https://source.unsplash.com/random/?car/1576",
-        "https://source.unsplash.com/random/?car/1776",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346223",
+      "https://source.unsplash.com/random/?car/143623",
+      "https://source.unsplash.com/random/?car/1344623",
+      "https://source.unsplash.com/random/?car/154623",
+      "https://source.unsplash.com/random/?car/1766323",
+    ],
   },
   {
     id: "11",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "00053784",
@@ -1219,11 +1176,10 @@ export const DUMMY_CARS = [
       horsepower: "192",
       torque: "198",
     },
+    transmission: "automatic",
     miles: "4256",
-    price: {
-      original: "42565",
-      discounted: "39900",
-    },
+    price: "42565",
+    discounted: "39900",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1231,19 +1187,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "56256",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/8",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/162",
-        "https://source.unsplash.com/random/?car/136",
-        "https://source.unsplash.com/random/?car/146",
-        "https://source.unsplash.com/random/?car/156",
-        "https://source.unsplash.com/random/?car/176",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346222",
+      "https://source.unsplash.com/random/?car/143622",
+      "https://source.unsplash.com/random/?car/1344622",
+      "https://source.unsplash.com/random/?car/154622",
+      "https://source.unsplash.com/random/?car/1766322",
+    ],
   },
   {
     id: "12",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0000107",
@@ -1262,11 +1216,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "175",
     },
+    transmission: "automatic",
     miles: "12508",
-    price: {
-      original: "32456",
-      discounted: "35990",
-    },
+    price: "32456",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1274,19 +1226,17 @@ export const DUMMY_CARS = [
       state: "MA",
       zip: "02108",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/32",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/123462",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/13446",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/17663",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/12346221",
+      "https://source.unsplash.com/random/?car/143621",
+      "https://source.unsplash.com/random/?car/1344621",
+      "https://source.unsplash.com/random/?car/154621",
+      "https://source.unsplash.com/random/?car/1766321",
+    ],
   },
   {
     id: "13",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0001298",
@@ -1305,11 +1255,9 @@ export const DUMMY_CARS = [
       horsepower: "987",
       torque: "1056",
     },
+    transmission: "automatic",
     miles: "7965",
-    price: {
-      original: "148900",
-      discounted: "145600",
-    },
+    price: "148900",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1317,19 +1265,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "15489",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/14",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/12362",
-        "https://source.unsplash.com/random/?car/135436",
-        "https://source.unsplash.com/random/?car/144326",
-        "https://source.unsplash.com/random/?car/15246",
-        "https://source.unsplash.com/random/?car/17643",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234620",
+      "https://source.unsplash.com/random/?car/14360",
+      "https://source.unsplash.com/random/?car/134460",
+      "https://source.unsplash.com/random/?car/15460",
+      "https://source.unsplash.com/random/?car/176630",
+    ],
   },
   {
     id: "14",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0002368",
@@ -1347,11 +1293,9 @@ export const DUMMY_CARS = [
       horsepower: "245",
       torque: "260",
     },
+    transmission: "automatic",
     miles: "8000",
-    price: {
-      original: "56500",
-      discounted: "52899",
-    },
+    price: "56500",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1359,19 +1303,17 @@ export const DUMMY_CARS = [
       state: "PA",
       zip: "56987",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/23",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/16322",
-        "https://source.unsplash.com/random/?car/1346",
-        "https://source.unsplash.com/random/?car/14236",
-        "https://source.unsplash.com/random/?car/1556",
-        "https://source.unsplash.com/random/?car/1476",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234692",
+      "https://source.unsplash.com/random/?car/14396",
+      "https://source.unsplash.com/random/?car/134469",
+      "https://source.unsplash.com/random/?car/15469",
+      "https://source.unsplash.com/random/?car/176639",
+    ],
   },
   {
     id: "15",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0003478",
@@ -1389,11 +1331,9 @@ export const DUMMY_CARS = [
       horsepower: "298",
       torque: "315",
     },
+    transmission: "automatic",
     miles: "6458",
-    price: {
-      original: "75485",
-      discounted: "75485",
-    },
+    price: "75485",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1401,19 +1341,17 @@ export const DUMMY_CARS = [
       state: "VA",
       zip: "36521",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/16",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1662",
-        "https://source.unsplash.com/random/?car/1736",
-        "https://source.unsplash.com/random/?car/1466",
-        "https://source.unsplash.com/random/?car/1566",
-        "https://source.unsplash.com/random/?car/1746",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234682",
+      "https://source.unsplash.com/random/?car/14368",
+      "https://source.unsplash.com/random/?car/134468",
+      "https://source.unsplash.com/random/?car/15468",
+      "https://source.unsplash.com/random/?car/176638",
+    ],
   },
   {
     id: "16",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0004504",
@@ -1431,11 +1369,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "195",
     },
+    transmission: "automatic",
     miles: "0",
-    price: {
-      original: "39879",
-      discounted: "36990",
-    },
+    price: "39879",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1443,19 +1379,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "11738",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/1",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1623",
-        "https://source.unsplash.com/random/?car/1336",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/1764",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234627",
+      "https://source.unsplash.com/random/?car/14367",
+      "https://source.unsplash.com/random/?car/134467",
+      "https://source.unsplash.com/random/?car/15467",
+      "https://source.unsplash.com/random/?car/176637",
+    ],
   },
   {
     id: "17",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0005669",
@@ -1473,11 +1407,9 @@ export const DUMMY_CARS = [
       horsepower: "192",
       torque: "198",
     },
+    transmission: "automatic",
     miles: "4256",
-    price: {
-      original: "42565",
-      discounted: "39900",
-    },
+    price: "42565",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1485,19 +1417,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "56256",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/2",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1562",
-        "https://source.unsplash.com/random/?car/1356",
-        "https://source.unsplash.com/random/?car/1456",
-        "https://source.unsplash.com/random/?car/15556",
-        "https://source.unsplash.com/random/?car/1756",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234626",
+      "https://source.unsplash.com/random/?car/14366",
+      "https://source.unsplash.com/random/?car/134466",
+      "https://source.unsplash.com/random/?car/15466",
+      "https://source.unsplash.com/random/?car/176636",
+    ],
   },
   {
     id: "18",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0000704",
@@ -1516,11 +1446,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "175",
     },
+    transmission: "automatic",
     miles: "12508",
-    price: {
-      original: "32456",
-      discounted: "35990",
-    },
+    price: "32456",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1528,19 +1456,17 @@ export const DUMMY_CARS = [
       state: "MA",
       zip: "02108",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/3",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1632",
-        "https://source.unsplash.com/random/?car/1326",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/1536",
-        "https://source.unsplash.com/random/?car/17e6",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234625",
+      "https://source.unsplash.com/random/?car/14365",
+      "https://source.unsplash.com/random/?car/134465",
+      "https://source.unsplash.com/random/?car/15465",
+      "https://source.unsplash.com/random/?car/176635",
+    ],
   },
   {
     id: "19",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0001865",
@@ -1559,11 +1485,9 @@ export const DUMMY_CARS = [
       horsepower: "987",
       torque: "1056",
     },
+    transmission: "automatic",
     miles: "7965",
-    price: {
-      original: "148900",
-      discounted: "145600",
-    },
+    price: "148900",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1571,19 +1495,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "15489",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/4",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1262",
-        "https://source.unsplash.com/random/?car/1316",
-        "https://source.unsplash.com/random/?car/1426",
-        "https://source.unsplash.com/random/?car/1526",
-        "https://source.unsplash.com/random/?car/1726",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234624",
+      "https://source.unsplash.com/random/?car/14364",
+      "https://source.unsplash.com/random/?car/134464",
+      "https://source.unsplash.com/random/?car/15464",
+      "https://source.unsplash.com/random/?car/176634",
+    ],
   },
   {
     id: "20",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0002978",
@@ -1601,11 +1523,9 @@ export const DUMMY_CARS = [
       horsepower: "245",
       torque: "260",
     },
+    transmission: "automatic",
     miles: "8000",
-    price: {
-      original: "56500",
-      discounted: "52899",
-    },
+    price: "56500",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1613,19 +1533,17 @@ export const DUMMY_CARS = [
       state: "PA",
       zip: "56987",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/5",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1692",
-        "https://source.unsplash.com/random/?car/1306",
-        "https://source.unsplash.com/random/?car/1436",
-        "https://source.unsplash.com/random/?car/1556",
-        "https://source.unsplash.com/random/?car/17976",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234623",
+      "https://source.unsplash.com/random/?car/14363",
+      "https://source.unsplash.com/random/?car/134463",
+      "https://source.unsplash.com/random/?car/15463",
+      "https://source.unsplash.com/random/?car/176633",
+    ],
   },
   {
     id: "21",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "0003145",
@@ -1643,11 +1561,9 @@ export const DUMMY_CARS = [
       horsepower: "298",
       torque: "315",
     },
+    transmission: "automatic",
     miles: "6458",
-    price: {
-      original: "75485",
-      discounted: "75485",
-    },
+    price: "75485",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1655,19 +1571,17 @@ export const DUMMY_CARS = [
       state: "VA",
       zip: "36521",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/6",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1622",
-        "https://source.unsplash.com/random/?car/1236",
-        "https://source.unsplash.com/random/?car/1346",
-        "https://source.unsplash.com/random/?car/1546",
-        "https://source.unsplash.com/random/?car/1756",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234623",
+      "https://source.unsplash.com/random/?car/14363",
+      "https://source.unsplash.com/random/?car/134463",
+      "https://source.unsplash.com/random/?car/15463",
+      "https://source.unsplash.com/random/?car/176633",
+    ],
   },
   {
     id: "22",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "000428",
@@ -1685,11 +1599,9 @@ export const DUMMY_CARS = [
       horsepower: "186",
       torque: "195",
     },
+    transmission: "automatic",
     miles: "0",
-    price: {
-      original: "39879",
-      discounted: "36990",
-    },
+    price: "39879",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1697,19 +1609,17 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "11738",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/7",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/1672",
-        "https://source.unsplash.com/random/?car/1376",
-        "https://source.unsplash.com/random/?car/1476",
-        "https://source.unsplash.com/random/?car/1576",
-        "https://source.unsplash.com/random/?car/1776",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234622",
+      "https://source.unsplash.com/random/?car/14362",
+      "https://source.unsplash.com/random/?car/134462",
+      "https://source.unsplash.com/random/?car/15462",
+      "https://source.unsplash.com/random/?car/176632",
+    ],
   },
   {
     id: "23",
+    isStock: "true",
     status: "available",
     listing: {
       listingId: "000536",
@@ -1727,11 +1637,9 @@ export const DUMMY_CARS = [
       horsepower: "192",
       torque: "198",
     },
+    transmission: "automatic",
     miles: "4256",
-    price: {
-      original: "42565",
-      discounted: "39900",
-    },
+    price: "42565",
     extColor: "white",
     intColor: "black",
     location: {
@@ -1739,15 +1647,33 @@ export const DUMMY_CARS = [
       state: "NY",
       zip: "56256",
     },
-    pictures: {
-      cover: "https://source.unsplash.com/random/?car/8",
-      otherPictures: [
-        "https://source.unsplash.com/random/?car/162",
-        "https://source.unsplash.com/random/?car/136",
-        "https://source.unsplash.com/random/?car/146",
-        "https://source.unsplash.com/random/?car/156",
-        "https://source.unsplash.com/random/?car/176",
-      ],
-    },
+    pictures: [
+      "https://source.unsplash.com/random/?car/1234621",
+      "https://source.unsplash.com/random/?car/14361",
+      "https://source.unsplash.com/random/?car/134461",
+      "https://source.unsplash.com/random/?car/15461",
+      "https://source.unsplash.com/random/?car/176631",
+    ],
   },
 ];
+
+export const defaultDescription = `Lorem ipsum, or lipsum as it is sometimes known, is dummy
+text used in laying out print, graphic or web designs. The
+passage is attributed to an unknown typesetter in the 15th
+century who is thought to have scrambled parts of Cicero's
+De Finibus Bonorum et Malorum for use in a type specimen
+book. It usually begins with: “Lorem ipsum dolor sit amet,
+consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.” The purpose
+of lorem ipsum is to create a natural looking block of
+text (sentence, paragraph, page, etc.) that doesn't
+distract from the layout. A practice not without
+controversy, laying out pages with meaningless filler text
+can be very useful when the focus is meant to be on
+design, not content. The passage experienced a surge in
+popularity during the 1960s when Letraset used it on their
+dry-transfer sheets, and again during the 90s as desktop
+publishers bundled the text with their software. Today
+it's seen all around the web; on templates, websites, and
+stock designs. Use our generator to get your own, or read
+on for the authoritative history of lorem ipsum.`;

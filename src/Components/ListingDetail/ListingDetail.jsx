@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ListingDetailContainer from "./ListingDetailContainer";
 import FeaturedSection from "../Featured/FeaturedSection";
 
@@ -21,7 +21,7 @@ const ListingDetail = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     scrollToPosition();
   }, []);
 

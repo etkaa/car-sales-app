@@ -4,6 +4,7 @@ import LeftScrollArrow from "../Featured/LeftScrollArrow";
 import RightScrollArrow from "../Featured/RightScrollArrow";
 import { getListingDetails } from "../../utils/utils";
 import Loading from "../UI/Loading";
+import ListingDetailError from "./ListingDetailError";
 import {
   ListingLikeIcon,
   MessageIcon,
@@ -69,6 +70,7 @@ const ListingDetailContainer = ({ scroll }) => {
   const listingId = params.listingID;
 
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const [item, setItem] = useState(defaultItem);
 
@@ -77,11 +79,19 @@ const ListingDetailContainer = ({ scroll }) => {
     async function fetchData(id) {
       // You can await here
       try {
-        const item = await getListingDetails(id);
-        setItem(item);
-        setIsLoading(false);
+        setError(false);
+        setIsLoading(true);
         scroll();
+        const item = await getListingDetails(id);
+        setIsLoading(false);
+        if (item) {
+          setItem(item);
+        } else {
+          setError(true);
+        }
       } catch (error) {
+        setError(true);
+        setIsLoading(false);
         console.log(error);
       }
     }
@@ -180,9 +190,9 @@ const ListingDetailContainer = ({ scroll }) => {
         max-w-7xl mx-auto my-8 shadow-lg px-0 md:px-6 md:py-4
       bg-slate-50 md:w-[90%] lg:max-h-[44rem]"
       >
-        {isLoading ? (
-          <div className="w-full h-[22rem] lg:h-[44rem] my-auto mx-auto">
-            <Loading />
+        {isLoading || error ? (
+          <div className="flex items-center w-full h-[22rem] lg:h-[44rem] my-auto mx-auto">
+            {error ? <ListingDetailError /> : <Loading />}
           </div>
         ) : (
           <Fragment>

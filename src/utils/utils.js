@@ -102,7 +102,7 @@ export const clearAllFavorites = async () => {
 };
 
 export const getListingDetails = async (listingId) => {
-  var result;
+  var result = null;
   await axios
     .post(
       `${process.env.REACT_APP_API_URL}/listing/getListingById`,

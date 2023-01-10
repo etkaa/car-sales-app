@@ -191,7 +191,7 @@ const ListingDetailContainer = ({ scroll }) => {
       bg-slate-50 md:w-[90%] lg:max-h-[44rem]"
       >
         {isLoading || error ? (
-          <div className="flex items-center w-full h-[22rem] lg:h-[44rem] my-auto mx-auto">
+          <div className="flex items-center w-full h-[22rem] lg:h-[44rem] my-auto mx-auto px-4">
             {error ? <ListingDetailError /> : <Loading />}
           </div>
         ) : (

@@ -3,7 +3,7 @@ import ListingCard from "../UI/ListingCard";
 import LeftScrollArrow from "./LeftScrollArrow";
 import RightScrollArrow from "./RightScrollArrow";
 
-import { fetchListings } from "../../features/listings/featuredSlice";
+import { fetchListings } from "../../features/featuredListings/featuredSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Loading from "../UI/Loading";

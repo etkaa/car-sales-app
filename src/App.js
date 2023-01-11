@@ -11,6 +11,7 @@ import { checkAuth } from "./utils/checkAuth";
 import { useDispatch } from "react-redux";
 import { setUser } from "./features/user/userSlice";
 import { clearFavorites } from "./features/favorites/favoritesSlice";
+import MyListings from "./Components/MyListings/MyListings";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
         />
         <Route path="/listing/:listingID" element={<ListingDetail />} />
         <Route path="/user/favorites" element={<Favorites />} />
+        <Route path="/user/listings" element={<MyListings />} />
         <Route path="/listing/add" element={<CreateListing />} />
         <Route path="*" element={<Home />} />
       </Routes>

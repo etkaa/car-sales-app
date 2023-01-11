@@ -13,13 +13,14 @@ import { applyMiddleware } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import userReducer from "../features/user/userSlice";
 import favoritesReducer from "../features/favorites/favoritesSlice";
-import featuredReducer from "../features/listings/featuredSlice";
+import featuredReducer from "../features/featuredListings/featuredSlice";
 import listingImagesReducer from "../features/listingImages/listingImagesSlice";
+import userListingsReducer from "../features/userListings/userListingsSlice";
 
 const persistConfig = {
   key: "carsnow",
   storage,
-  blacklist: ["featured", "favorites", "listingImages"],
+  blacklist: ["featured", "favorites", "listingImages", "userListings"],
 };
 
 const reducers = combineReducers({
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   favorites: favoritesReducer,
   featured: featuredReducer,
   listingImages: listingImagesReducer,
+  userListings: userListingsReducer,
 });
 
 const persistedReducer = persistReducer(

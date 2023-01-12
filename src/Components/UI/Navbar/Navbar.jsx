@@ -96,12 +96,6 @@ const Navbar = () => {
                 Favorites
               </Link>
               <Link
-                to="/listing/add"
-                className="text-xl hover:text-gray-400 transition duration-100 py-4"
-              >
-                Sell My Car
-              </Link>
-              <Link
                 to="/user/listings"
                 className="text-xl hover:text-gray-400 transition duration-100 py-4"
               >
@@ -161,15 +155,6 @@ const Navbar = () => {
               className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
             >
               Favorites
-            </Link>
-            <Link
-              to="/listing/add"
-              onClick={() => {
-                setIsMenuOpen(false);
-              }}
-              className="block  hover:bg-slate-200 border-b-2 px-4 py-4 text-xl text-center"
-            >
-              Sell My Car
             </Link>
             <Link
               to="/user/listings"

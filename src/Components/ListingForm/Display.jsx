@@ -10,7 +10,7 @@ const Display = ({ uploadedImageKeys, imageSelected, isLoading }) => {
 
   if (isLoading) {
     content = (
-      <div className="min-w-[100%] lg:min-h-[29.5rem] md:min-h-[26rem] min-h-[20rem] flex flex-col items-center space-y-2 justify-center">
+      <div className="min-w-[100%] lg:min-h-[29.5rem] md:min-h-[26rem] min-h-[20rem] flex flex-col items-center space-y-6 justify-center">
         <h1 className="text-slate-700 font-normal animate-pulse mx-auto">
           Uploading your images...
         </h1>

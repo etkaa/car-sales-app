@@ -4,6 +4,7 @@ import { postListing } from "../../utils/utils";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { clearListingImages } from "../../features/listingImages/listingImagesSlice";
+import { fetchUserListings } from "../../features/userListings/userListingsSlice";
 
 const defaultFormData = {
   description: "",
@@ -35,6 +36,7 @@ const DataForm = ({ uploadedImageKeys }) => {
   const [pageNumber, setPageNumber] = useState(0);
   const [edited, setEdited] = useState(false);
   const [emptyInputError, setEmptyInputError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -75,6 +77,8 @@ const DataForm = ({ uploadedImageKeys }) => {
   const formSubmitHandler = async (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
+
     let emptyFields = [];
     for (const [key, value] of Object.entries(formData)) {
       if (value === "") {
@@ -83,17 +87,24 @@ const DataForm = ({ uploadedImageKeys }) => {
     }
     if (emptyFields.length > 0) {
       setEmptyInputError(`Please fill out all the fields before submitting.`);
+      setIsLoading(false);
       return;
     } else if (uploadedImageKeys.length === 0) {
       setEmptyInputError(`Please upload at least one image before submitting.`);
+      setIsLoading(false);
       return;
     }
 
     const result = await postListing(formData, uploadedImageKeys);
     if (result) {
       dispatch(clearListingImages());
-      navigate(`/listing/${result}`);
+      dispatch(fetchUserListings());
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate(`/listing/${result}`);
+      }, 2000);
     } else {
+      setIsLoading(false);
       setEmptyInputError(`Something went wrong, please try again later.`);
     }
     ///@@@FORM SUBMITS EVEN THOUGH THERE ARE EMPTY FIELDS, IMPLEMENT A CHECK
@@ -332,10 +343,13 @@ const DataForm = ({ uploadedImageKeys }) => {
         {pageNumber === 3 && (
           <button
             type="submit"
-            className="shadow-sm text-md font-semibold mx-auto px-5 py-2 bg-blue-500 text-slate-100 rounded-2xl 
-          hover:bg-yellow-500 hover:text-white hover:scale-110 tranition duration-150 "
+            disabled={isLoading}
+            className={`shadow-sm text-md font-semibold mx-auto px-5 py-2 bg-blue-500 text-slate-100 rounded-2xl 
+          hover:bg-yellow-500 hover:text-white hover:scale-110 ${
+            isLoading && "animate-pulse"
+          } tranition duration-150`}
           >
-            Submit
+            {!isLoading ? "Submit" : "Submitting..."}
           </button>
         )}
       </div>

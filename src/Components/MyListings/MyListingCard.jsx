@@ -19,9 +19,9 @@ const MyListingCard = ({ item }) => {
   return (
     <div
       className="flex min-h-[12rem] max-h-[12rem] min-w-[22rem] max-w-[30rem] bg-slate-50 
-        rounded-xl shadow-md py-1 px-1"
+        rounded-xl shadow-md px-1"
     >
-      <div className="flex justify-between mx-auto w-[65%] px-1 py-2">
+      <div className="flex justify-between mx-auto w-[65%] px-1 py-3">
         <div
           name="listing_details"
           className="flex flex-col justify-between mx-auto space-y-2 w-[90%]"

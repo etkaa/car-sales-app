@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserListings } from "../../features/userListings/userListingsSlice";
 import MyListingCard from "./MyListingCard";
 import NoListingCard from "./NoListingCard";
+import CreateCard from "./CreateCard";
 
 const MyListings = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.userListings.status);
   const userListings = useSelector((state) => state.userListings.userListings);
-  
-//   const error = useSelector((state) => state.userListings.error); 
-// Need to set up error and loading states ##
+
+  //   const error = useSelector((state) => state.userListings.error);
+  // Need to set up error and loading states ##
 
   useEffect(() => {
     if (status === "idle") {
@@ -27,8 +28,9 @@ const MyListings = () => {
       {userListings.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl md:px-4 py-4 mx-auto my-auto">
           {userListings.map((item) => {
-            return <MyListingCard item={item} key={item.id} />;
+            return <MyListingCard item={item} key={item._id} />;
           })}
+          <CreateCard />
         </div>
       ) : (
         <NoListingCard />

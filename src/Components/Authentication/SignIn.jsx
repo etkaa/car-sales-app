@@ -22,7 +22,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/dashboard";
+  const from = location.state?.from?.pathname || "/home";
 
   const handleChange = (event) => {
     const { name, value } = event.target;

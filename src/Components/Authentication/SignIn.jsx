@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { batch, useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
-import { fetchFavoriteListingDetails } from "../../features/favorites/favoritesSlice";
+// import { fetchFavoriteListingDetails } from "../../features/favorites/favoritesSlice";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -53,7 +53,7 @@ const SignIn = () => {
       .then((response) => {
         batch(() => {
           dispatch(setUser(response.data.user));
-          dispatch(fetchFavoriteListingDetails());
+          // dispatch(fetchFavoriteListingDetails());
         });
         navigate(from, { replace: true });
       })

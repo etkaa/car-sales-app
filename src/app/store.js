@@ -48,6 +48,3 @@ export const store = configureStore({
       },
     }),
 });
-
-// export const persistor = persistStore(store);
-//this is done in the index.js

@@ -1,10 +1,10 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../../features/user/userSlice";
-import { fetchFavoriteListingDetails } from "../../../features/favorites/favoritesSlice";
-import { clearFavorites } from "../../../features/favorites/favoritesSlice";
-import { useNavigate } from "react-router-dom";
+import { resetUser } from "../../../features/user/userSlice";
+import { resetFavorites } from "../../../features/favorites/favoritesSlice";
+import { resetListingImages } from "../../../features/listingImages/listingImagesSlice";
+import { resetUserListings } from "../../../features/userListings/userListingsSlice";
 import axios from "axios";
 
 import { HamburgerIcon, CloseIcon } from "../Icons.jsx";
@@ -14,14 +14,13 @@ const Navbar = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const navigate = useNavigate();
 
-  //get the userID from the store and set the isLoggedIn state when the first time component is rendered
+  //get the userID from the store and set the isLoggedIn state
+  //when the component rendered for the first time
   useEffect(() => {
     if (user === null) {
       setIsLoggedIn(false);
     } else {
-      dispatch(fetchFavoriteListingDetails());
       setIsLoggedIn(true);
     }
   }, [user, dispatch]);
@@ -34,9 +33,10 @@ const Navbar = () => {
       })
       .then((response) => {
         if (response.status === 200) {
-          dispatch(setUser(null));
-          dispatch(clearFavorites());
-          navigate(0);
+          dispatch(resetUser());
+          dispatch(resetFavorites());
+          dispatch(resetListingImages());
+          dispatch(resetUserListings());
         } else {
           console.log("logout failed");
         }

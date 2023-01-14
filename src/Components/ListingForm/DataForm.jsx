@@ -3,7 +3,7 @@ import { CloseIcon, LeftPointArrow, RightPointArrow } from "../UI/Icons";
 import { postListing } from "../../utils/utils";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { clearListingImages } from "../../features/listingImages/listingImagesSlice";
+import { resetListingImages } from "../../features/listingImages/listingImagesSlice";
 import { fetchUserListings } from "../../features/userListings/userListingsSlice";
 
 const defaultFormData = {
@@ -97,7 +97,7 @@ const DataForm = ({ uploadedImageKeys }) => {
 
     const result = await postListing(formData, uploadedImageKeys);
     if (result) {
-      dispatch(clearListingImages());
+      dispatch(resetListingImages());
       dispatch(fetchUserListings());
       setTimeout(() => {
         setIsLoading(false);

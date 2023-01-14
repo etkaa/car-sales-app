@@ -18,11 +18,15 @@ const MyListings = () => {
   // Need to set up error and loading states ##
 
   useEffect(() => {
+    if (user) {
     if (status === "idle") {
       //if status is idle, dispatch the async thunk
       dispatch(fetchUserListings());
     }
-  }, [status, dispatch]);
+  } else {
+    return;
+  }
+  }, [user, status, dispatch]);
 
   let content;
 

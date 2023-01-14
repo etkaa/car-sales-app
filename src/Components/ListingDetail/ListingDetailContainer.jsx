@@ -69,10 +69,12 @@ const ListingDetailContainer = ({ scroll }) => {
 
   const listingId = params.listingID;
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const [item, setItem] = useState(defaultItem);
+
+  console.log("rendered");
 
   //fetch data from server when component mounts
   useEffect(() => {
@@ -83,6 +85,7 @@ const ListingDetailContainer = ({ scroll }) => {
         setIsLoading(true);
         scroll();
         const item = await getListingDetails(id);
+        console.log("fetched");
         setIsLoading(false);
         if (item) {
           setItem(item);
@@ -96,9 +99,7 @@ const ListingDetailContainer = ({ scroll }) => {
       }
     }
     fetchData(listingId);
-  }, [listingId, scroll]); // Or [] if effect doesn't need props or state
-
-  // const item = DUMMY_CARS.find((el) => el.listing.listingId === listingId);
+  }, [listingId, scroll]); 
 
   const name = `${item.year} ${item.make} ${item.model} ${item.trim}`;
   const price = Number(item.price).toLocaleString();

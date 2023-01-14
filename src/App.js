@@ -9,8 +9,8 @@ import Favorites from "./Components/Favorites/Favorites";
 import CreateListing from "./Components/ListingForm/CreateListing";
 import { checkAuth } from "./utils/checkAuth";
 import { useDispatch } from "react-redux";
-import { setUser } from "./features/user/userSlice";
-import { clearFavorites } from "./features/favorites/favoritesSlice";
+import { resetUser } from "./features/user/userSlice";
+import { resetFavorites } from "./features/favorites/favoritesSlice";
 import MyListings from "./Components/MyListings/MyListings";
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
     const fetchAuthStatus = async () => {
       const response = await checkAuth();
       if (!response) {
-        dispatch(setUser(null));
-        dispatch(clearFavorites());
+        dispatch(resetUser());
+        dispatch(resetFavorites());
       }
     };
     fetchAuthStatus();

@@ -4,9 +4,9 @@ import { OpenLinkIcon, EditIcon, DeleteIcon } from "../UI/Icons";
 
 const MyListingCard = ({ item }) => {
   //capitalize the first letter of a string
-//   const capitalize = (str) => {
-//     return str.charAt(0).toUpperCase() + str.slice(1);
-//   };
+  //   const capitalize = (str) => {
+  //     return str.charAt(0).toUpperCase() + str.slice(1);
+  //   };
 
   var imageSource;
   const isStock = item.isStock;
@@ -38,15 +38,19 @@ const MyListingCard = ({ item }) => {
             className="flex justify-between lg:px-4 text-slate-700"
           >
             <div name="views" className="flex flex-col justify-around">
-              <h1 className="text-lg font-medium">246</h1>
+              <h1 className="text-lg font-medium">{item.statistics.viewed}</h1>
               <h1 className="text-lg">Views</h1>
             </div>
             <div name="likes" className="flex flex-col justify-around ">
-              <h1 className="text-lg font-medium">17</h1>
+              <h1 className="text-lg font-medium">
+                {item.statistics.favorited}
+              </h1>
               <h1 className="text-lg">Likes</h1>
             </div>
             <div name="message" className="flex flex-col justify-around">
-              <h1 className="text-lg font-medium">4</h1>
+              <h1 className="text-lg font-medium">
+                {item.statistics.contacted}
+              </h1>
               <h1 className="text-lg">Reach</h1>
             </div>
           </div>

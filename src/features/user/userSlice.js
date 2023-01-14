@@ -13,6 +13,9 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    resetUser: (state, action) => {
+      return initialState;
+    },
     clearStore: () => {
       storage.removeItem("persist:carsnow");
     },
@@ -21,6 +24,6 @@ export const userSlice = createSlice({
 
 // console.log(userSlice);
 
-export const { setUser, clearStore } = userSlice.actions;
+export const { setUser, resetUser, clearStore } = userSlice.actions;
 
 export default userSlice.reducer;

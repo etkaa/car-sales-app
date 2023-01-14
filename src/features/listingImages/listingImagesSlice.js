@@ -19,8 +19,8 @@ export const listingImagesSlice = createSlice({
         (imageKey) => !action.payload.includes(imageKey)
       );
     },
-    clearListingImages: (state, action) => {
-      state.listingImages = [];
+    resetListingImages: (state, action) => {
+      return initialState;
     },
   },
   extraReducers(builder) {
@@ -58,7 +58,7 @@ export const fetchUnsubmittedImageKeys = createAsyncThunk(
   }
 );
 
-export const { addListingImage, removeListingImage, clearListingImages } =
+export const { addListingImage, removeListingImage, resetListingImages } =
   listingImagesSlice.actions;
 
 export default listingImagesSlice.reducer;

@@ -17,6 +17,9 @@ export const featuredSlice = createSlice({
     setFeaturedListings: (state, action) => {
       state.featuredListings = action.payload;
     },
+    resetFeaturedListings: (state, action) => {
+      return initialState;
+    },
   },
   extraReducers(builder) {
     builder
@@ -45,6 +48,7 @@ export const fetchListings = createAsyncThunk(
   }
 );
 
-export const { setFeaturedListings } = featuredSlice.actions;
+export const { setFeaturedListings, resetFeaturedListings } =
+  featuredSlice.actions;
 
 export default featuredSlice.reducer;

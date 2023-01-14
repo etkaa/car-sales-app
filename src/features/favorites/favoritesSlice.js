@@ -19,8 +19,8 @@ export const favoritesSlice = createSlice({
         (favorite) => favorite._id !== action.payload
       );
     },
-    clearFavorites: (state) => {
-      state.favoriteObjects = [];
+    resetFavorites: (state, action) => {
+      return initialState;
     },
   },
   extraReducers(builder) {
@@ -56,7 +56,7 @@ export const fetchFavoriteListingDetails = createAsyncThunk(
   }
 );
 
-export const { addFavorite, removeFavorite, clearFavorites } =
+export const { addFavorite, removeFavorite, resetFavorites } =
   favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

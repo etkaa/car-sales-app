@@ -23,8 +23,8 @@ export const userListingsSlice = createSlice({
         (listing) => listing._id !== action.payload
       );
     },
-    clearUserListings: (state, action) => {
-      state.userListings = [];
+    resetUserListings: (state, action) => {
+      return initialState;
     },
   },
   extraReducers(builder) {
@@ -60,6 +60,6 @@ export const fetchUserListings = createAsyncThunk(
   }
 );
 
-export const { setUserListings } = userListingsSlice.actions;
+export const { setUserListings, resetUserListings } = userListingsSlice.actions;
 
 export default userListingsSlice.reducer;

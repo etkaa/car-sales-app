@@ -24,18 +24,18 @@ import { defaultDescription } from "../AdvancedSearch/data";
 
 const ListingDetailContainer = ({ scroll }) => {
   const defaultItem = {
-    isStock: "default",
-    id: "0",
+    isStock: "true",
+    id: "Default",
     status: "available",
     listing: {
       description: defaultDescription,
-      listingId: "0000",
-      listingOwnerId: "0000",
+      listingId: "Default",
+      listingOwnerId: "Default",
       listingOwnerNickname: "Default",
       createdAt: new Date("October 3, 2022, 14:45"),
     },
-    condition: "used",
-    year: "0000",
+    condition: "Default",
+    year: "Default",
     make: "Default",
     model: "Default",
     trim: "Default",
@@ -47,22 +47,16 @@ const ListingDetailContainer = ({ scroll }) => {
       torque: "000",
     },
     transmission: "Default",
-    miles: "0000",
-    price: "0000",
+    miles: "Default",
+    price: "Default",
     extColor: "Default",
     intColor: "Default",
     location: {
       city: "Default",
-      state: "DF",
-      zip: "00000",
+      state: "Default",
+      zip: "Default",
     },
-    pictures: [
-      "https://source.unsplash.com/random/?car/123462",
-      "https://source.unsplash.com/random/?car/1436",
-      "https://source.unsplash.com/random/?car/13446",
-      "https://source.unsplash.com/random/?car/1546",
-      "https://source.unsplash.com/random/?car/17663",
-    ],
+    pictures: [],
   };
 
   const params = useParams();
@@ -74,8 +68,6 @@ const ListingDetailContainer = ({ scroll }) => {
 
   const [item, setItem] = useState(defaultItem);
 
-  console.log("rendered");
-
   //fetch data from server when component mounts
   useEffect(() => {
     async function fetchData(id) {
@@ -85,10 +77,12 @@ const ListingDetailContainer = ({ scroll }) => {
         setIsLoading(true);
         scroll();
         const item = await getListingDetails(id);
-        console.log("fetched");
         setIsLoading(false);
         if (item) {
           setItem(item);
+          setIndex(0);
+          setHideLeft(true);
+          setHideRight(false);
         } else {
           setError(true);
         }
@@ -99,7 +93,7 @@ const ListingDetailContainer = ({ scroll }) => {
       }
     }
     fetchData(listingId);
-  }, [listingId, scroll]); 
+  }, [listingId, scroll]);
 
   const name = `${item.year} ${item.make} ${item.model} ${item.trim}`;
   const price = Number(item.price).toLocaleString();

@@ -256,3 +256,32 @@ export const postListing = async (formData, imageKeys) => {
     });
   return value;
 };
+
+export const deleteUserListing = async (listingId) => {
+  let value = false;
+  await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/listing/delete`,
+      {
+        listingId: listingId,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        // console.log("Deleted listing! / utils.js");
+        value = true;
+      } else {
+        console.log("Error deleting listing! / utils.js");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return value;
+};

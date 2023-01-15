@@ -60,6 +60,7 @@ export const fetchUserListings = createAsyncThunk(
   }
 );
 
-export const { setUserListings, resetUserListings } = userListingsSlice.actions;
+export const { setUserListings, removeUserListing, resetUserListings } =
+  userListingsSlice.actions;
 
 export default userListingsSlice.reducer;

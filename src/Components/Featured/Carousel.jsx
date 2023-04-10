@@ -68,7 +68,7 @@ const Carousel = () => {
       <div
         ref={carousel}
         className="flex scrollbar-hide snap-x snap-mandatory scroll-smooth
-           space-x-4 px-4 min-w-[22rem] overflow-x-auto w-[100%] my-auto 
+           space-x-4 px-4 min-w-[20rem] overflow-x-auto w-[100%] my-auto 
            md:mx-auto place-items-center h-96"
       >
         {content}

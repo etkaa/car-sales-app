@@ -74,7 +74,7 @@ const ListingCard = ({ item }) => {
       onClick={() => navigate(`/listing/${item._id}`)}
       key={item._id}
       className="lg:hover:scale-105 cursor-pointer transition duration-200 
-      snap-center min-w-[20rem] max-w-xs rounded-lg shadow-md h-[22rem] 
+      snap-center min-w-[20rem] rounded-lg shadow-md h-[22rem] 
       bg-slate-50 lg:hover:bg-white mx-auto my-auto z-0"
     >
       <div className="h-[65%] w-full rounded-t-lg relative z-2 ">

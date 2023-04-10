@@ -13,7 +13,7 @@ const SearchBar = () => {
     <Fragment>
       <div className="flex justify-center items-center bg-gradient-to-r from-purple-500 to-pink-500">
         <div className="flex-col w-screen justify-between items-center text-center">
-          <div className="flex-col space-y-2 text-center md:text-left w-3/4 max-w-xl mx-auto mt-10">
+          <div className="flex flex-col space-y-2 text-center md:text-left w-3/4 max-w-xl mx-auto mt-10">
             <h2 className="text-4xl text-white font-medium">Love it, buy it</h2>
             <h2 className="text-4xl text-white font-bold">Now!</h2>
           </div>

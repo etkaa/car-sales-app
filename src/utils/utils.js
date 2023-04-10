@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setUser } from "../features/user/userSlice";
 
 export const addToFavorites = async (listingId) => {
   var result;
@@ -278,6 +279,37 @@ export const deleteUserListing = async (listingId) => {
         value = true;
       } else {
         console.log("Error deleting listing! / utils.js");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return value;
+};
+
+export const updateProfileFields = async (formData, dispatch) => {
+  let value = false;
+
+  await axios
+    .put(
+      `${process.env.REACT_APP_API_URL}/user/updateProfileFields`,
+      {
+        formData: formData,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        // console.log("Updated profile fields! / utils.js");
+        dispatch(setUser(response.data.updatedUser));
+        value = true;
+      } else {
+        console.log("Error updating profile fields! / utils.js");
       }
     })
     .catch((error) => {

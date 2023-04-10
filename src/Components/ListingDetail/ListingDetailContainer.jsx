@@ -22,7 +22,7 @@ import {
 } from "../../features/favorites/favoritesSlice";
 import { defaultDescription } from "../AdvancedSearch/data";
 
-const ListingDetailContainer = ({ scroll }) => {
+const ListingDetailContainer = () => {
   const defaultItem = {
     isStock: "true",
     id: "Default",
@@ -75,7 +75,6 @@ const ListingDetailContainer = ({ scroll }) => {
       try {
         setError(false);
         setIsLoading(true);
-        scroll();
         const item = await getListingDetails(id);
         setIsLoading(false);
         if (item) {
@@ -93,7 +92,7 @@ const ListingDetailContainer = ({ scroll }) => {
       }
     }
     fetchData(listingId);
-  }, [listingId, scroll]);
+  }, [listingId]);
 
   const name = `${item.year} ${item.make} ${item.model} ${item.trim}`;
   const price = Number(item.price).toLocaleString();

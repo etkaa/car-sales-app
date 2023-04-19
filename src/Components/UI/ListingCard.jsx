@@ -11,7 +11,7 @@ import {
 } from "../../features/favorites/favoritesSlice";
 import { setUser } from "../../features/user/userSlice";
 
-const ListingCard = ({ item }) => {
+const ListingCard = ({ item, isScrolling }) => {
   const price = Number(item.price).toLocaleString();
   const mileage = Number(item.miles).toLocaleString();
 
@@ -73,9 +73,11 @@ const ListingCard = ({ item }) => {
     <div
       onClick={() => navigate(`/listing/${item._id}`)}
       key={item._id}
-      className="lg:hover:scale-105 cursor-pointer transition duration-200 
+      className={`${
+        !isScrolling && "lg:hover:scale-105"
+      } cursor-pointer transition duration-200 
       snap-center min-w-[20rem] rounded-lg shadow-md h-[22rem] 
-      bg-slate-50 lg:hover:bg-white mx-auto my-auto z-0"
+      bg-slate-50 lg:hover:bg-white mx-auto my-auto z-0`}
     >
       <div className="h-[65%] w-full rounded-t-lg relative z-2 ">
         <img

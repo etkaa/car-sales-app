@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import ListingCard from "../UI/ListingCard";
 import LeftScrollArrow from "./LeftScrollArrow";
 import RightScrollArrow from "./RightScrollArrow";
@@ -10,6 +10,7 @@ import Loading from "../UI/Loading";
 
 const Carousel = () => {
   const carousel = useRef();
+  const [isScrolling, setIsScrolling] = useState(false);
 
   /////////////////////////// Redux ///////////////////////////
 
@@ -38,7 +39,9 @@ const Carousel = () => {
     content = <Loading />;
   } else if (status === "succeeded") {
     content = featuredListings?.map((item) => {
-      return <ListingCard key={item._id} item={item} />;
+      return (
+        <ListingCard key={item._id} item={item} isScrolling={isScrolling} />
+      );
     });
   } else if (status === "failed") {
     content = <div>{error}</div>;
@@ -47,11 +50,19 @@ const Carousel = () => {
   ////////////////Wait for content to load////////////////////
 
   const leftScrollHandler = () => {
+    setIsScrolling(true);
     carousel.current.scrollLeft -= carousel.current.offsetWidth * 0.95;
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, 600);
   };
 
   const rightScrollHandler = () => {
+    setIsScrolling(true);
     carousel.current.scrollLeft += carousel.current.offsetWidth * 0.95;
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, 600);
   };
 
   return (

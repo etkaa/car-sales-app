@@ -19,8 +19,8 @@ const Profile = () => {
         className="flex flex-col lg:flex-row justify-between items-center lg:items-start 
       space-y-4 lg:space-y-0 lg:space-x-4 max-w-3xl w-full px-4 py-4"
       >
-        <ProfileImage />
-        <Form />
+        <ProfileImage user={user} />
+        <Form user={user} />
       </div>
     </section>
   );

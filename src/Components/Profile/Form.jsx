@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateProfileFields } from "../../utils/utils";
 
-const Form = () => {
+const Form = ({ user }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
 
   const defaultProfileValues = {
     fullName: user.fullName,

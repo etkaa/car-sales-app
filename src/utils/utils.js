@@ -130,7 +130,7 @@ export const getListingDetails = async (listingId) => {
   return result;
 };
 
-export const postImage = async ({ images }) => {
+export const uploadImages = async ({ images }) => {
   const formData = new FormData();
   images.forEach((image) => {
     formData.append("images", image);
@@ -310,6 +310,36 @@ export const updateProfileFields = async (formData, dispatch) => {
         value = true;
       } else {
         console.log("Error updating profile fields! / utils.js");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return value;
+};
+
+export const updateProfileImage = async (imageKey) => {
+  let value = false;
+
+  await axios
+    .put(
+      `${process.env.REACT_APP_API_URL}/user/updateProfileImage`,
+      {
+        imageKey: imageKey,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        value = true;
+        console.log("Updated profile image! / utils.js");
+      } else {
+        console.log("Error updating profile image! / utils.js");
       }
     })
     .catch((error) => {

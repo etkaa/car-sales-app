@@ -2,7 +2,7 @@ import { useState, useRef, Fragment, useEffect, useCallback } from "react";
 import { UploadIcon } from "../UI/Icons";
 import { useDispatch } from "react-redux";
 import { addListingImage } from "../../features/listingImages/listingImagesSlice";
-import { postImage, addUnsubmittedKeys } from "../../utils/utils";
+import { uploadImages, addUnsubmittedKeys } from "../../utils/utils";
 
 function UploadInput({ setIsLoading, uploadedImageKeys }) {
   // console.log("UploadImage.jsx RENDER");
@@ -23,7 +23,7 @@ function UploadInput({ setIsLoading, uploadedImageKeys }) {
       return;
     }
     setIsLoading(true);
-    const result = await postImage({ images: files });
+    const result = await uploadImages({ images: files });
     setImages(result.image); //result.image is an array of objects
     setIsLoading(false);
   }, [files, setIsLoading, maxNumberOfFiles]);
